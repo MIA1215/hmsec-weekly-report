@@ -275,8 +275,8 @@
     <span class="brand">현대차증권 마케팅팀 · 서포터즈 운영팀</span>
     <div class="controls">
       <div class="seg" role="group" aria-label="보기 방식">
-        <button id="viewSimple" aria-pressed="true" type="button">간단히</button>
-        <button id="viewFull" aria-pressed="false" type="button">전체</button>
+        <button id="viewSimple" aria-pressed="false" type="button">간단히</button>
+        <button id="viewFull" aria-pressed="true" type="button">전체</button>
       </div>
       <button class="icon-btn" id="themeBtn" type="button">◐ 테마</button>
     </div>
@@ -640,8 +640,8 @@
       });
     }
 
-    var savedView = 'simple';
-    try { savedView = localStorage.getItem(VKEY) || 'simple'; } catch (e) {}
+    var savedView = 'full';
+    try { savedView = localStorage.getItem(VKEY) || 'full'; } catch (e) {}
     setView(savedView);
     redraw();
     window.addEventListener('resize', function () { clearTimeout(window.__rt); window.__rt = setTimeout(redraw, 200); });
