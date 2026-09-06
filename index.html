@@ -9,40 +9,42 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   :root {
-    --ground: #f5f6f8;
+    --ground: #f4f6f9;
     --surface: #ffffff;
-    --sink: #eef0f4;
-    --ink: #1a2331;
-    --ink-muted: #59636f;
+    --sink: #eceff4;
+    --ink: #182030;
+    --ink-muted: #566172;
     --ink-faint: #8b94a2;
-    --line: #e3e6ec;
-    --line-strong: #cfd4dd;
+    --line: #e2e6ec;
+    --line-strong: #ccd2dc;
     --accent: #2f5fd0;
-    --accent-weak: #e9eefb;
-    --pos: #127a48;
-    --pos-weak: #e2f1e9;
-    --warn: #96610f;
-    --warn-weak: #f6eed9;
-    --neg: #c13c31;
-    --neg-weak: #f9e6e3;
-    --shadow: 0 1px 2px rgba(20, 28, 45, .04), 0 6px 16px rgba(20, 28, 45, .05);
+    --accent-weak: #e8eefb;
+    --gold: #b0791d;
+    --pos: #12794a;
+    --pos-weak: #e0f0e8;
+    --warn: #935f0e;
+    --warn-weak: #f5edd8;
+    --neg: #c03a30;
+    --neg-weak: #f9e5e2;
+    --shadow: 0 1px 2px rgba(18, 26, 42, .04), 0 5px 14px rgba(18, 26, 42, .05);
     --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
     --mono: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --ground: #0e1217;
-      --surface: #161b22;
-      --sink: #1e242d;
-      --ink: #e8ebf1;
-      --ink-muted: #a1aab8;
-      --ink-faint: #6b7482;
-      --line: #272e39;
-      --line-strong: #3a424f;
+      --ground: #0d1117;
+      --surface: #161c24;
+      --sink: #1d232d;
+      --ink: #e9ecf2;
+      --ink-muted: #a0a9b8;
+      --ink-faint: #6a7380;
+      --line: #262d38;
+      --line-strong: #38414e;
       --accent: #6f9bff;
-      --accent-weak: #1a2740;
-      --pos: #4cc487;
-      --pos-weak: #14261e;
+      --accent-weak: #182740;
+      --gold: #e2a53f;
+      --pos: #49c184;
+      --pos-weak: #14271f;
       --warn: #e0a23f;
       --warn-weak: #2a2313;
       --neg: #e8695a;
@@ -51,18 +53,19 @@
     }
   }
   :root[data-theme="dark"] {
-    --ground: #0e1217;
-    --surface: #161b22;
-    --sink: #1e242d;
-    --ink: #e8ebf1;
-    --ink-muted: #a1aab8;
-    --ink-faint: #6b7482;
-    --line: #272e39;
-    --line-strong: #3a424f;
+    --ground: #0d1117;
+    --surface: #161c24;
+    --sink: #1d232d;
+    --ink: #e9ecf2;
+    --ink-muted: #a0a9b8;
+    --ink-faint: #6a7380;
+    --line: #262d38;
+    --line-strong: #38414e;
     --accent: #6f9bff;
-    --accent-weak: #1a2740;
-    --pos: #4cc487;
-    --pos-weak: #14261e;
+    --accent-weak: #182740;
+    --gold: #e2a53f;
+    --pos: #49c184;
+    --pos-weak: #14271f;
     --warn: #e0a23f;
     --warn-weak: #2a2313;
     --neg: #e8695a;
@@ -78,8 +81,8 @@
     background: var(--ground);
     color: var(--ink);
     font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.62;
+    font-size: 13px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
   img { max-width: 100%; }
@@ -96,9 +99,9 @@
     border-bottom: 1px solid var(--line);
   }
   .topbar-in {
-    max-width: 860px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 10px 24px;
+    padding: 9px 24px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -126,251 +129,163 @@
   .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   .wrap {
-    max-width: 860px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 30px 24px 72px;
+    padding: 26px 24px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
   }
 
+  /* masthead */
   .mast h1 {
-    margin: 0 0 6px;
-    font-size: 25px;
+    margin: 0 0 5px;
+    font-size: 23px;
     font-weight: 700;
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
-  .mast .dateline {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--ink-muted);
-  }
+  .mast .dateline { font-family: var(--mono); font-size: 12px; color: var(--ink-muted); }
   .mast .dateline b { color: var(--ink); font-weight: 500; }
-  .baseline-note {
-    margin: 14px 0 4px;
+  .banner {
+    margin-top: 12px;
     display: flex;
     gap: 9px;
     align-items: baseline;
     background: var(--accent-weak);
-    color: var(--ink);
-    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+    border-radius: 8px;
+    padding: 9px 13px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .banner .b-dot { color: var(--accent); font-weight: 700; }
+  .banner b { font-weight: 600; }
+  .banner a { color: var(--accent); text-decoration: none; white-space: nowrap; }
+  .banner a:hover { text-decoration: underline; }
+
+  .alert {
+    display: flex;
+    gap: 9px;
+    align-items: baseline;
+    background: color-mix(in srgb, var(--neg-weak) 60%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--neg) 30%, transparent);
+    border-left: 3px solid var(--neg);
     border-radius: 8px;
     padding: 9px 13px;
     font-size: 12.5px;
-    line-height: 1.5;
   }
-  .baseline-note .bn-dot { color: var(--accent); font-weight: 700; }
-  .src-link {
-    font-size: 11.5px;
-    font-family: var(--mono);
-    margin: 6px 0 0;
-  }
-  .src-link a { color: var(--accent); text-decoration: none; word-break: break-all; }
-  .src-link a:hover { text-decoration: underline; }
+  .alert .a-tag { font-family: var(--mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--neg); }
 
-  .block-h {
-    font-size: 12px;
+  /* section heading */
+  .sh {
+    font-size: 11.5px;
     font-weight: 600;
     letter-spacing: .04em;
     text-transform: uppercase;
     color: var(--ink-faint);
     font-family: var(--mono);
-    margin: 30px 0 12px;
+    margin: 8px 0 0;
     display: flex;
     align-items: baseline;
     gap: 8px;
   }
-  .block-h .src {
-    font-family: var(--mono);
-    font-size: 9.5px;
-    font-weight: 400;
-    color: var(--ink-faint);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 0 4px;
-    text-transform: none;
-    letter-spacing: 0;
-  }
+  .sh .note { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--ink-faint); }
 
-  /* baseline KPI tiles */
-  .kpis {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-  }
+  /* KPI row */
+  .kpis { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
   .kpi {
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 13px 14px 12px;
+    border-radius: 11px;
+    padding: 12px 13px 11px;
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
     min-width: 0;
   }
-  .kpi .k-label { font-size: 11px; color: var(--ink-muted); font-weight: 500; }
-  .kpi .k-val {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-  }
+  .kpi .k-label { font-size: 10.5px; color: var(--ink-muted); font-weight: 500; }
+  .kpi .k-val { font-size: 23px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+  .kpi .k-val.pos { color: var(--pos); }
   .kpi .k-val.neg { color: var(--neg); }
-  .kpi .k-note { font-size: 10.5px; color: var(--ink-faint); font-family: var(--mono); margin-top: 2px; }
+  .kpi .k-note { font-size: 10px; color: var(--ink-faint); font-family: var(--mono); margin-top: 3px; line-height: 1.4; }
 
-  /* direction list — 책임님 numbered (real sequence) */
-  ol.dir {
-    list-style: none;
-    counter-reset: d;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  ol.dir li {
-    counter-increment: d;
-    display: grid;
-    grid-template-columns: 30px 1fr;
-    gap: 13px;
-    padding: 13px 0;
-    border-top: 1px solid var(--line);
-  }
-  ol.dir li:last-child { border-bottom: 1px solid var(--line); }
-  ol.dir li::before {
-    content: "0" counter(d);
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--accent);
-  }
-  ol.dir .d-t { font-size: 13.5px; font-weight: 600; }
-  ol.dir .d-d { font-size: 12.5px; color: var(--ink-muted); margin-top: 3px; }
-
-  /* collapsible sections */
-  .fold { border-top: 1px solid var(--line-strong); }
-  .fold:last-of-type { border-bottom: 1px solid var(--line-strong); }
-  .fold > summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 16px 2px;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-  }
-  .fold > summary::-webkit-details-marker { display: none; }
-  .fold > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .fold > summary .tw {
-    color: var(--ink-faint);
-    font-size: 12px;
-    transition: transform .15s ease;
-    transform: translateY(1px);
-  }
-  @media (prefers-reduced-motion: reduce) { .fold > summary .tw { transition: none; } }
-  .fold[open] > summary .tw { transform: rotate(90deg) translateX(1px); }
-  .fold > summary h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
-  .fold > summary .teaser {
-    margin-left: auto;
-    font-size: 11.5px;
-    color: var(--ink-faint);
-    text-align: right;
-    font-family: var(--mono);
-    padding-left: 12px;
-  }
-  .fold-body { padding: 4px 2px 26px; display: flex; flex-direction: column; gap: 26px; }
-  .sub { display: flex; flex-direction: column; gap: 9px; }
-  .sub > h3 {
-    margin: 0;
-    font-size: 13.5px;
-    font-weight: 600;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
-  .sub > h3 .src {
-    font-family: var(--mono);
-    font-size: 9.5px;
-    font-weight: 400;
-    color: var(--ink-faint);
+  /* panels */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .panel {
+    background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 0 4px;
+    border-radius: 12px;
+    padding: 15px 16px;
+    box-shadow: var(--shadow);
   }
-  .sub .cap { font-size: 11.5px; color: var(--ink-muted); margin: -3px 0 3px; }
+  .panel > h3 { margin: 0 0 2px; font-size: 14px; font-weight: 700; }
+  .panel > .p-cap { font-size: 11px; color: var(--ink-muted); margin: 0 0 12px; }
 
-  .take {
-    font-size: 12.5px;
-    line-height: 1.55;
-    padding: 9px 0 0;
-    border-top: 1px dashed var(--line);
-  }
-  .take::before { content: "→ "; color: var(--accent); font-weight: 700; }
-  .take b { color: var(--ink); font-weight: 600; }
+  .chart svg { width: 100%; height: 210px; display: block; }
+  .legend2 { display: flex; gap: 14px; font-size: 10.5px; font-family: var(--mono); color: var(--ink-muted); margin-bottom: 4px; }
+  .legend2 .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
 
-  .rows { display: flex; flex-direction: column; }
-  .mrow {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: baseline;
-    gap: 4px 14px;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .mrow:first-child { border-top: 1px solid var(--line); }
-  .mrow .m-k { font-size: 12.5px; color: var(--ink-muted); }
-  .mrow .m-v { font-size: 15px; font-weight: 600; text-align: right; }
-  .mrow .m-v .u { font-size: 11px; font-weight: 500; color: var(--ink-faint); }
-  .mrow .m-sub {
-    grid-column: 1 / -1;
-    font-size: 10.5px;
-    color: var(--ink-faint);
-    font-family: var(--mono);
-    margin-top: -2px;
-  }
-
-  .abar { display: grid; grid-template-columns: 150px 1fr; gap: 6px 12px; align-items: center; font-size: 12px; padding: 6px 0; }
+  .abar { display: grid; grid-template-columns: 118px 1fr; gap: 5px 11px; align-items: center; font-size: 12px; padding: 6px 0; }
   .abar .a-lab { font-weight: 500; }
   .abar .a-track { background: var(--sink); border-radius: 4px; height: 22px; overflow: hidden; }
   .abar .a-fill { height: 100%; background: var(--accent); border-radius: 4px; min-width: 3px; }
-  .abar .a-v { grid-column: 2; font-size: 11px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+  .abar .a-v { grid-column: 2; font-size: 10.5px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
   .abar .a-v b { color: var(--ink); }
 
-  .tscroll {
-    overflow-x: auto;
-    border: 1px solid var(--line);
-    border-radius: 9px;
-    -webkit-overflow-scrolling: touch;
+  .diag {
+    margin-top: 12px;
+    background: var(--warn-weak);
+    border: 1px solid color-mix(in srgb, var(--warn) 26%, transparent);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.55;
   }
-  table.grid { border-collapse: collapse; width: 100%; font-size: 12px; min-width: 480px; }
+  .diag .d-tag { font-weight: 700; color: var(--warn); margin-right: 5px; }
+  .diag b { color: var(--ink); font-weight: 600; }
+
+  /* tables */
+  table.grid { border-collapse: collapse; width: 100%; font-size: 11.5px; }
   table.grid th, table.grid td {
-    padding: 8px 11px;
+    padding: 7px 8px;
     text-align: right;
     border-bottom: 1px solid var(--line);
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
   }
-  table.grid th { background: var(--sink); font-weight: 600; color: var(--ink-muted); font-size: 10.5px; }
+  table.grid th { color: var(--ink-faint); font-weight: 600; font-size: 10px; }
   table.grid th.l, table.grid td.l { text-align: left; }
+  table.grid td.l.t { white-space: normal; line-height: 1.35; padding-right: 12px; }
   table.grid tr:last-child td { border-bottom: none; }
   table.grid .hi { color: var(--accent); font-weight: 700; }
-  table.grid td.l.title { white-space: normal; min-width: 220px; }
-  .tag {
-    font-family: var(--mono);
-    font-size: 9px;
-    border-radius: 3px;
-    padding: 0 4px;
-    border: 1px solid var(--line-strong);
-    color: var(--ink-faint);
+  .tg { font-family: var(--mono); font-size: 8.5px; border-radius: 3px; padding: 0 3px; border: 1px solid var(--line-strong); color: var(--ink-faint); white-space: nowrap; }
+  .tg.job { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+  .tg.mny { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, transparent); }
+  .est { font-family: var(--mono); font-size: 8.5px; color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent); border-radius: 3px; padding: 0 3px; }
+  .p-foot { font-size: 10.5px; color: var(--ink-faint); margin: 10px 0 0; }
+
+  /* direction cards */
+  .dirs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .dcard {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 12px 13px;
+    box-shadow: var(--shadow);
   }
-  .tag.job { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
-  .tag.mny { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, transparent); }
-  .est { font-family: var(--mono); font-size: 9px; color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent); border-radius: 3px; padding: 0 3px; }
+  .dcard .d-n { font-family: var(--mono); font-size: 10px; color: var(--accent); font-weight: 500; }
+  .dcard .d-t { font-size: 12.5px; font-weight: 700; margin: 3px 0 5px; }
+  .dcard .d-d { font-size: 11px; color: var(--ink-muted); line-height: 1.5; }
+  .dcard .d-d b { color: var(--ink); font-weight: 600; }
 
-  ul.plain { margin: 0; padding-left: 17px; display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; }
-  ul.plain li::marker { color: var(--ink-faint); }
-
+  /* calendar */
   .cal { display: flex; flex-direction: column; }
   .crow {
     display: grid;
-    grid-template-columns: 74px 1fr;
+    grid-template-columns: 70px 1fr;
     gap: 12px;
     padding: 9px 0;
     border-bottom: 1px solid var(--line);
@@ -379,52 +294,43 @@
   }
   .crow:first-child { border-top: 1px solid var(--line); }
   .crow .c-d { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); }
-  .crow .c-mc { display: block; font-size: 10.5px; color: var(--accent); font-family: var(--mono); margin-top: 3px; }
+  .crow .c-mc { display: block; font-size: 10px; color: var(--accent); font-family: var(--mono); margin-top: 3px; }
 
-  .gloss { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 20px; font-size: 12px; }
-  .gloss dt { font-weight: 600; margin-top: 8px; }
-  .gloss dd { margin: 0; color: var(--ink-muted); }
-  .legend { display: flex; flex-direction: column; gap: 5px; font-size: 12px; }
-  .legend b { color: var(--ink); }
-  .legend .src {
-    font-family: var(--mono);
-    font-size: 9.5px;
-    color: var(--ink-faint);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 0 4px;
-  }
-  .rulebox {
-    background: var(--warn-weak);
-    border: 1px solid color-mix(in srgb, var(--warn) 28%, transparent);
-    color: var(--warn);
-    border-radius: 8px;
-    padding: 9px 12px;
-    font-size: 12px;
-    font-weight: 500;
-  }
-  .rollup { background: var(--sink); border-radius: 8px; padding: 9px 12px; font-size: 12px; }
-  .rollup b { color: var(--ink); }
+  ul.plain { margin: 6px 0 0; padding-left: 16px; display: flex; flex-direction: column; gap: 5px; font-size: 12px; }
+  ul.plain li::marker { color: var(--ink-faint); }
+  ul.plain b { font-weight: 600; }
+
+  .twocol { columns: 2; column-gap: 26px; font-size: 11.5px; }
+  .twocol p { margin: 0 0 5px; break-inside: avoid; }
+  .twocol b { font-weight: 600; }
 
   footer.foot {
-    margin-top: 34px;
-    padding-top: 14px;
+    margin-top: 6px;
+    padding-top: 13px;
     border-top: 1px solid var(--line);
-    font-size: 11px;
+    font-size: 10.5px;
     color: var(--ink-faint);
-    font-family: var(--mono);
+    line-height: 1.6;
   }
+  footer.foot b { color: var(--ink-muted); }
+  footer.foot .fl { font-family: var(--mono); margin-top: 8px; }
 
+  @media (max-width: 1000px) {
+    .kpis { grid-template-columns: repeat(3, 1fr); }
+    .dirs { grid-template-columns: repeat(3, 1fr); }
+  }
   @media (max-width: 720px) {
-    .gloss { grid-template-columns: 1fr; }
-    .fold > summary .teaser { display: none; }
-    .abar { grid-template-columns: 116px 1fr; }
-    .crow { grid-template-columns: 64px 1fr; }
+    .grid2 { grid-template-columns: 1fr; }
+    .kpis { grid-template-columns: 1fr 1fr; }
+    .dirs { grid-template-columns: 1fr; }
+    .twocol { columns: 1; }
+    .abar { grid-template-columns: 100px 1fr; }
   }
   @media print {
     .topbar { display: none; }
-    .kpi, .tscroll { box-shadow: none; }
+    .kpi, .panel, .dcard { box-shadow: none; }
     body { background: #fff; }
+    .grid2 { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -433,7 +339,6 @@
 <div class="topbar">
   <div class="topbar-in">
     <span class="mark">현대차증권 마케팅팀 · 서포터즈 운영팀</span>
-    <button class="btn" id="foldAll" type="button">모두 펼치기</button>
     <button class="btn" id="themeBtn" type="button">◐ 테마</button>
   </div>
 </div>
@@ -442,15 +347,20 @@
 
   <div class="mast">
     <h1>현증선배 인스타그램 주간 리포트</h1>
-    <div class="dateline"><b>W1</b> · 2026.09.07 (월) 작성 &nbsp;·&nbsp; 3기 활동 시작주 (첫 발행 9/8)</div>
-    <div class="baseline-note">
-      <span class="bn-dot">●</span>
-      <span><b>1주차 = 기준선 리포트.</b> 아래 지표·진단은 책임님 「현증선배 인스타그램 콘텐츠 진단」 대시보드(2026.01–08 실측)에서 가져왔습니다. 3기 첫 발행이 9/8이라 <b>주간 성과 비교는 2주차부터</b> 시작됩니다.</span>
+    <div class="dateline"><b>W1</b> · 2026.09.07 (월) 작성 &nbsp;·&nbsp; 3기 활동 시작주 (첫 발행 9/8) &nbsp;·&nbsp; 최지연</div>
+    <div class="banner">
+      <span class="b-dot">●</span>
+      <span><b>1주차 = 기준선 리포트.</b> 지표·진단은 책임님 「현증선배 인스타그램 콘텐츠 진단」(2026.01–08 실측)을 옮겼습니다. 3기 첫 발행이 9/8이라 <b>주간 성과 비교는 2주차부터.</b>
+      &nbsp;<a href="https://studio.supermetrics.com/d/834a76e5-2dd9-49ea-b223-a5d8ce8ae088" target="_blank" rel="noopener">원본 대시보드 ↗</a></span>
     </div>
-    <p class="src-link">원본 대시보드 → <a href="https://studio.supermetrics.com/d/834a76e5-2dd9-49ea-b223-a5d8ce8ae088" target="_blank" rel="noopener">studio.supermetrics.com/d/834a76e5…</a></p>
   </div>
 
-  <p class="block-h">기준선 지표 <span class="src">2026.01–08 · IG Insights + 주간 추적 시트</span></p>
+  <div class="alert">
+    <span class="a-tag">경고</span>
+    <span><b>8월 팔로워 순감 −45명 · 게시 물량 4건.</b> 3기 출범 직전 달 — 물량 하한(월 12건)이 이번 기수의 1순위 방어선.</span>
+  </div>
+
+  <p class="sh">기준선 지표 <span class="note">2026.01–08 · Instagram Insights + 주간 추적 시트</span></p>
   <div class="kpis">
     <div class="kpi">
       <span class="k-label">누적 게시물</span>
@@ -458,213 +368,155 @@
       <span class="k-note">2026년 1월 이후</span>
     </div>
     <div class="kpi">
-      <span class="k-label">게시물당 도달 · 취업</span>
-      <span class="k-val tnum">36,222</span>
-      <span class="k-note">재테크는 2,430 — 15배 차</span>
+      <span class="k-label">4–5월 순증 비중</span>
+      <span class="k-val tnum pos">75%</span>
+      <span class="k-note">2,085명 / 연간 2,780명</span>
     </div>
     <div class="kpi">
-      <span class="k-label">게시물당 팔로워 순증</span>
-      <span class="k-val tnum">30.7 → 5.6명</span>
-      <span class="k-note">4–5월 → 6–8월</span>
+      <span class="k-label">게시물당 순증 (4–5월)</span>
+      <span class="k-val tnum">30.7명</span>
+      <span class="k-note">68건 → +2,085명</span>
     </div>
     <div class="kpi">
-      <span class="k-label">8월 팔로워</span>
-      <span class="k-val tnum neg">−45명</span>
-      <span class="k-note">게시 물량 4건</span>
+      <span class="k-label">게시물당 순증 (6–8월)</span>
+      <span class="k-val tnum neg">5.6명</span>
+      <span class="k-note">30건 → +167명</span>
     </div>
     <div class="kpi">
       <span class="k-label">최고 도달 게시물</span>
       <span class="k-val tnum">765,672</span>
-      <span class="k-note">5글자 메시지 · 광고 추정</span>
+      <span class="k-note">5글자 메시지(취업, 5/30) · 광고 추정</span>
     </div>
   </div>
 
-  <p class="block-h">이번 기수 운영 방향 <span class="src">책임님 진단 결론</span></p>
-  <ol class="dir">
-    <li>
-      <div>
-        <div class="d-t">정체성 재고정</div>
-        <div class="d-d">재테크 정보는 본 계정으로 이관. 현증선배는 “현직자가 알려주는 증권사 취업”으로 좁게 회귀. 하반기 공채 시즌과 타이밍 일치.</div>
+  <div class="grid2">
+    <div class="panel chart">
+      <h3>월별 팔로워 순증 vs 게시 물량</h3>
+      <p class="p-cap">팔로워 = 주간 추적 시트 · 게시 물량 = Instagram Insights · 월별 배분은 기간 합계에 맞춘 근사값</p>
+      <div class="legend2">
+        <span><span class="sw" style="background:var(--accent)"></span>팔로워 순증 (명, 좌축)</span>
+        <span><span class="sw" style="background:var(--gold)"></span>게시물 수 (건, 우축)</span>
       </div>
-    </li>
-    <li>
-      <div>
-        <div class="d-t">직무 인터뷰 정규 편성</div>
-        <div class="d-d">IB·RA·해외주식·퇴직연금·IT편 모두 검증 완료. 소재 재고는 사내 보유. 주 2회 고정, 월 8건 기준.</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <div class="d-t">팔로우 게이팅 상시화</div>
-        <div class="d-d">자소서 나눔이 유일하게 검증된 전환 기계 (댓글 936·1,145건). 이벤트성이 아닌 월 1회 고정 리소스로 운영.</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <div class="d-t">부스팅 목표 재설계</div>
-        <div class="d-d">도달 76만에 주간 순증 200명. 도달 목적 집행 중단, 취업 관심사 타게팅 + 게이팅 게시물에 집중.</div>
-      </div>
-    </li>
-    <li>
-      <div>
-        <div class="d-t">게시 물량 하한선</div>
-        <div class="d-d">월 4건으로는 노출 자체가 유지되지 않음 (8월 순감의 직접 원인). 서포터즈 3기 출범 기준 <b>월 12건 하한</b> 설정.</div>
-      </div>
-    </li>
-  </ol>
-
-  <!-- ===== FOLD 1 ===== -->
-  <details class="fold" id="f-diag">
-    <summary><span class="tw">▸</span><h2>지난 8개월 진단</h2><span class="teaser">콘텐츠 축 격차 · 순증 붕괴 · 상·하위 게시물</span></summary>
-    <div class="fold-body">
-
-      <div class="sub">
-        <h3>콘텐츠 축별 성과 <span class="src">IG · 게시물당 평균</span></h3>
-        <p class="cap">캡션 키워드 자동 분류 · 막대 = 게시물 1건당 평균 도달</p>
-        <div>
-          <div class="abar"><span class="a-lab">취업·자소서·서포터즈</span><div class="a-track"><div class="a-fill" style="width:100%"></div></div><span class="a-v"><b>36,222</b> · 47건 · 저장 118 · 공유 206</span></div>
-          <div class="abar"><span class="a-lab">재테크 정보 카드뉴스</span><div class="a-track"><div class="a-fill" style="width:6.7%"></div></div><span class="a-v"><b>2,430</b> · 31건 · 저장 8 · 공유 11</span></div>
-        </div>
-        <p class="take">취업이 재테크보다 <b>도달 15배 · 저장 15배 · 공유 19배</b>. 캡션 완성도는 재테크가 더 높은데도 저장·공유가 거의 없음 — 원인은 포맷·카피가 아니라 <b>확보한 오디언스(취준생)와 주제(사회초년생 재테크)의 불일치</b>. (책임님 진단)</p>
-      </div>
-
-      <div class="sub">
-        <h3>게시물당 팔로워 순증 붕괴</h3>
-        <div class="rows">
-          <div class="mrow"><span class="m-k">4–5월</span><span class="m-v tnum">30.7 <span class="u">명/건</span></span><span class="m-sub">게시 68건 → 팔로워 +2,085 · 연간 순증(2,780)의 75%</span></div>
-          <div class="mrow"><span class="m-k">6–8월</span><span class="m-v tnum">5.6 <span class="u">명/건</span></span><span class="m-sub">게시 30건 → 팔로워 +167</span></div>
-          <div class="mrow"><span class="m-k">8월</span><span class="m-v tnum">−45 <span class="u">명</span></span><span class="m-sub">게시 물량 4건 — 순감</span></div>
-        </div>
-        <p class="take">물량이 줄면서 순증도 무너짐. 콘텐츠 축 이동(6월~)과 물량 감소가 겹친 구간.</p>
-      </div>
-
-      <div class="sub">
-        <h3>도달 상위 게시물 <span class="src">IG</span></h3>
-        <div class="tscroll">
-          <table class="grid">
-            <thead><tr><th class="l">게시물</th><th class="l">축</th><th class="l">게시일</th><th>도달</th><th>저장</th><th>공유</th><th>댓글</th></tr></thead>
-            <tbody>
-              <tr><td class="l title">빈칸을 채우면 나오는 5글자 메시지</td><td class="l"><span class="tag job">취업</span></td><td class="l">2026-05-30</td><td class="hi">765,672</td><td>120</td><td>300</td><td>68</td></tr>
-              <tr><td class="l title">[현증 JOB아] 증권사 신입 이야기 1편</td><td class="l"><span class="tag job">취업</span></td><td class="l">2026-01-28</td><td>312,030</td><td>1,998</td><td>1,877</td><td>30</td></tr>
-              <tr><td class="l title">현대차증권 서포터즈 느좋.Zip</td><td class="l"><span class="tag job">취업</span></td><td class="l">2026-06-20</td><td>207,185</td><td>586</td><td>2,099</td><td>23</td></tr>
-              <tr><td class="l title">“자격증 많을수록 취업에 유리한가요?” [IB편]</td><td class="l"><span class="tag job">취업</span></td><td class="l">2026-04-08</td><td>50,026</td><td>320</td><td>736</td><td>35</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="cap">5/30 게시물의 76.5만은 좋아요율 0.08%로 <span class="est">광고 집행분 추정</span> (Meta Ads 매칭 미실시).</p>
-      </div>
-
-      <div class="sub">
-        <h3>도달 하위 게시물 <span class="src">IG</span></h3>
-        <div class="tscroll">
-          <table class="grid">
-            <thead><tr><th class="l">게시물</th><th class="l">축</th><th class="l">게시일</th><th>도달</th><th>저장</th><th>공유</th><th>댓글</th></tr></thead>
-            <tbody>
-              <tr><td class="l title">2026년 개편된 청년혜택 총정리</td><td class="l"><span class="tag mny">재테크</span></td><td class="l">2026-04-03</td><td>550</td><td>11</td><td>12</td><td>0</td></tr>
-              <tr><td class="l title">2026 퇴직연금 개편안 총정리</td><td class="l"><span class="tag mny">재테크</span></td><td class="l">2026-03-28</td><td>556</td><td>2</td><td>0</td><td>0</td></tr>
-              <tr><td class="l title">외계어 같은 주식 용어</td><td class="l"><span class="tag">기타</span></td><td class="l">2026-03-27</td><td>600</td><td>4</td><td>8</td><td>3</td></tr>
-              <tr><td class="l title">주식 시작했는데 뭐부터 봐야 할지</td><td class="l"><span class="tag">기타</span></td><td class="l">2026-03</td><td>603</td><td>3</td><td>1</td><td>1</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="take">하위는 전부 재테크·기타. 상위 4건은 전부 취업. — 3기가 취업으로 좁히는 근거.</p>
-      </div>
-
+      <svg data-combo
+           data-bars="[320,150,58,1240,845,130,82,-45]"
+           data-line="[6,5,3,40,28,14,12,4]"
+           data-labels="[&quot;1월&quot;,&quot;2월&quot;,&quot;3월&quot;,&quot;4월&quot;,&quot;5월&quot;,&quot;6월&quot;,&quot;7월&quot;,&quot;8월&quot;]"
+           viewBox="0 0 460 210" aria-hidden="true"></svg>
+      <p class="p-foot">→ 4–5월 폭발(월 40·28건, 팔로워 +2,085) 뒤 6월부터 물량·순증 동반 붕괴. 8월은 순감.</p>
     </div>
-  </details>
 
-  <!-- ===== FOLD 2 ===== -->
-  <details class="fold" id="f-weekly">
-    <summary><span class="tw">▸</span><h2>2주차부터 채워지는 것</h2><span class="teaser">주간 지표 · 매니챗 흐름</span></summary>
-    <div class="fold-body">
-      <div class="sub">
-        <p style="font-size:12.5px;margin:0">1주차는 3기 첫 발행(9/8) 전이라 “이번 주 성과” 비교가 성립하지 않습니다. <b>2주차부터</b> 아래 항목이 매주 채워지고, 맨 위에 <b>이번 주 한 줄 요약</b>과 <b>다음 주 액션 3건</b>이 붙습니다.</p>
+    <div class="panel">
+      <h3>콘텐츠 축별 성과 격차</h3>
+      <p class="p-cap">캡션 키워드 자동 분류 · 게시물 1건당 평균 도달</p>
+      <div>
+        <div class="abar"><span class="a-lab">취업·자소서·서포터즈</span><div class="a-track"><div class="a-fill" style="width:100%"></div></div><span class="a-v"><b>36,222</b> · 47건 · 저장 118 · 공유 206</span></div>
+        <div class="abar"><span class="a-lab">재테크 정보 카드뉴스</span><div class="a-track"><div class="a-fill" style="width:6.7%"></div></div><span class="a-v"><b>2,430</b> · 31건 · 저장 8 · 공유 11</span></div>
       </div>
-      <div class="sub">
-        <h3>매주 추적할 지표</h3>
-        <ul class="plain">
-          <li>게시 건수 — 하한 주 3 / 월 12 대비</li>
-          <li>총 도달 · 논팔로워 비중</li>
-          <li><b>저장·공유율</b> — 좋아요보다 앞에 (다음 콘텐츠를 바꾸는 힘이 큼)</li>
-          <li>게시물별 성과 — 도달 · 저장 · 공유 · 팔로우 순증(추정)</li>
-          <li>매니챗 흐름 — <b>키워드 댓글 수 → DM 발송 수 → 링크 클릭 수</b></li>
-          <li>주제 축(취업 / 재테크 / 기타)별 게시물당 도달</li>
-          <li>한 줄 해석</li>
-        </ul>
-      </div>
-      <div class="sub">
-        <h3>월 1회 롤업</h3>
-        <p class="cap" style="margin:0">신규 팔로워 인구통계 · 주제 축 이동 추이 · 게시물당 순증 · 릴스 비중 → 책임님 월간 대시보드 연동.</p>
+      <div class="diag">
+        <span class="d-tag">구조적 진단</span>6월부터 콘텐츠 축이 취준생 대상 취업 정보에서 사회초년생 대상 재테크 정보로 이동. 캡션 완성도는 재테크가 더 높은데도 저장·공유가 거의 없음 — 원인은 포맷·카피가 아니라 <b>이미 확보한 오디언스(취준생)와 콘텐츠 주제의 불일치</b>. → 취업으로 좁힘.
       </div>
     </div>
-  </details>
+  </div>
 
-  <!-- ===== FOLD 3 ===== -->
-  <details class="fold" id="f-cal">
-    <summary><span class="tw">▸</span><h2>이번 주 발행 계획 (9/7–11)</h2><span class="teaser">운영 캘린더 · 참고</span></summary>
-    <div class="fold-body">
-      <div class="sub">
-        <p class="cap" style="margin:0">9/7 회의 확정. 리포트 성과 지표와는 별개인 팀별 발행 일정입니다.</p>
-        <div class="cal">
-          <div class="crow"><span class="c-d">9/8 화</span><span>발대식 브이로그 발행 — 현증공감<span class="c-mc">매니챗: 합격 꿀팁 페이지</span></span></div>
-          <div class="crow"><span class="c-d">9/9 수</span><span>무물 릴스 발행 — 현증잡아 · 밤까지 인터뷰 질문 리스트 제출<span class="c-mc">매니챗: 잡아 무물 이벤트 페이지</span></span></div>
-          <div class="crow"><span class="c-d">9/10 목</span><span>무물 카드뉴스 발행 — 현증머니<span class="c-mc">매니챗: 머니 무물 이벤트 페이지</span></span></div>
-          <div class="crow"><span class="c-d">9/11 금</span><span>신입직원 인터뷰 촬영 4명 (8:30 집합) · 금요 콘텐츠 발행 — 현증잡아 / 현증공감</span></div>
-        </div>
+  <div class="grid2">
+    <div class="panel">
+      <h3>도달 상위 게시물 TOP</h3>
+      <p class="p-cap">도달 기준 · 상위 4건</p>
+      <table class="grid">
+        <thead><tr><th class="l">게시물</th><th class="l">축</th><th class="l">게시일</th><th>도달</th><th>저장</th><th>공유</th><th>댓글</th></tr></thead>
+        <tbody>
+          <tr><td class="l t">빈칸을 채우면 나오는 5글자 메시지</td><td class="l"><span class="tg job">취업</span></td><td class="l">05-30</td><td class="hi">765,672</td><td>120</td><td>300</td><td>68</td></tr>
+          <tr><td class="l t">[현증 JOB아] 증권사 신입 이야기 1편</td><td class="l"><span class="tg job">취업</span></td><td class="l">01-28</td><td>312,030</td><td>1,998</td><td>1,877</td><td>30</td></tr>
+          <tr><td class="l t">현대차증권 서포터즈 느좋.Zip</td><td class="l"><span class="tg job">취업</span></td><td class="l">06-20</td><td>207,185</td><td>586</td><td>2,099</td><td>23</td></tr>
+          <tr><td class="l t">“자격증 많을수록 유리한가요?” [IB편]</td><td class="l"><span class="tg job">취업</span></td><td class="l">04-08</td><td>50,026</td><td>320</td><td>736</td><td>35</td></tr>
+        </tbody>
+      </table>
+      <p class="p-foot">5/30 게시물 76.5만은 좋아요율 0.08%로 <span class="est">광고 집행분 추정</span>.</p>
+    </div>
+
+    <div class="panel">
+      <h3>도달 하위 게시물 TOP</h3>
+      <p class="p-cap">도달 하위 4건 · 재테크·기타</p>
+      <table class="grid">
+        <thead><tr><th class="l">게시물</th><th class="l">축</th><th class="l">게시일</th><th>도달</th><th>저장</th><th>공유</th><th>댓글</th></tr></thead>
+        <tbody>
+          <tr><td class="l t">2026 개편 청년혜택 총정리</td><td class="l"><span class="tg mny">재테크</span></td><td class="l">04-03</td><td>550</td><td>11</td><td>12</td><td>0</td></tr>
+          <tr><td class="l t">2026 퇴직연금 개편안 총정리</td><td class="l"><span class="tg mny">재테크</span></td><td class="l">03-28</td><td>556</td><td>2</td><td>0</td><td>0</td></tr>
+          <tr><td class="l t">외계어 같은 주식 용어</td><td class="l"><span class="tg">기타</span></td><td class="l">03-27</td><td>600</td><td>4</td><td>8</td><td>3</td></tr>
+          <tr><td class="l t">주식 시작했는데 뭐부터 봐야 할지</td><td class="l"><span class="tg">기타</span></td><td class="l">03</td><td>603</td><td>3</td><td>1</td><td>1</td></tr>
+        </tbody>
+      </table>
+      <p class="p-foot">하위 4건 전부 재테크·기타. 상위 4건 전부 취업.</p>
+    </div>
+  </div>
+
+  <p class="sh">이번 기수 운영 방향 <span class="note">책임님 진단 결론</span></p>
+  <div class="dirs">
+    <div class="dcard">
+      <div class="d-n">01</div><div class="d-t">정체성 재고정</div>
+      <div class="d-d">재테크 정보는 본 계정으로 이관. 현증선배는 “현직자가 알려주는 증권사 취업”으로 좁게 회귀. 하반기 공채 시즌과 타이밍 일치.</div>
+    </div>
+    <div class="dcard">
+      <div class="d-n">02</div><div class="d-t">직무 인터뷰 정규 편성</div>
+      <div class="d-d">IB·RA·해외주식·퇴직연금·IT편 모두 검증 완료. 소재 재고 사내 보유. <b>주 2회 고정, 월 8건</b>.</div>
+    </div>
+    <div class="dcard">
+      <div class="d-n">03</div><div class="d-t">팔로우 게이팅 상시화</div>
+      <div class="d-d">자소서 나눔이 유일하게 검증된 전환 기계 (댓글 936·1,145건). 이벤트성 아닌 <b>월 1회 고정</b> 리소스로.</div>
+    </div>
+    <div class="dcard">
+      <div class="d-n">04</div><div class="d-t">부스팅 목표 재설계</div>
+      <div class="d-d">도달 76만에 주간 순증 200명. 도달 목적 집행 중단, 취업 관심사 타게팅 + 게이팅 게시물에 집중.</div>
+    </div>
+    <div class="dcard">
+      <div class="d-n">05</div><div class="d-t">게시 물량 하한선</div>
+      <div class="d-d">월 4건으로는 노출 유지 안 됨 (8월 순감의 직접 원인). 3기 출범 기준 <b>월 12건 하한</b>.</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>이번 주 발행 계획 (9/7–11)</h3>
+      <p class="p-cap">리포트 신규 추가분 · 9/7 회의 확정 · 성과 지표와 별개인 팀별 발행 일정</p>
+      <div class="cal">
+        <div class="crow"><span class="c-d">9/8 화</span><span>발대식 브이로그 발행 — 현증공감<span class="c-mc">매니챗: 합격 꿀팁 페이지</span></span></div>
+        <div class="crow"><span class="c-d">9/9 수</span><span>무물 릴스 발행 — 현증잡아 · 밤까지 인터뷰 질문 리스트 제출<span class="c-mc">매니챗: 잡아 무물 이벤트 페이지</span></span></div>
+        <div class="crow"><span class="c-d">9/10 목</span><span>무물 카드뉴스 발행 — 현증머니<span class="c-mc">매니챗: 머니 무물 이벤트 페이지</span></span></div>
+        <div class="crow"><span class="c-d">9/11 금</span><span>신입직원 인터뷰 촬영 4명 (8:30 집합) · 금요 콘텐츠 발행 — 현증잡아 / 현증공감</span></div>
       </div>
     </div>
-  </details>
 
-  <!-- ===== FOLD 4 ===== -->
-  <details class="fold" id="f-notes">
-    <summary><span class="tw">▸</span><h2>용어 · 출처 · 판단 규칙</h2><span class="teaser">읽기 전 참고</span></summary>
-    <div class="fold-body">
-      <div class="sub">
-        <h3>용어</h3>
-        <dl class="gloss">
-          <dt>도달</dt><dd>게시물을 본 사람 수</dd>
-          <dt>논팔로워 도달</dt><dd>그중 팔로우 안 한 사람 (신규 유입층)</dd>
-          <dt>저장 · 공유</dt><dd>나중에 보려 저장 / 남에게 보냄 — 좋아요보다 강한 신호</dd>
-          <dt>저장+공유율</dt><dd>(저장 + 공유) ÷ 도달</dd>
-          <dt>팔로워 순증</dt><dd>새 팔로우 − 언팔로우</dd>
-          <dt>팔로우 게이팅</dt><dd>팔로우·댓글을 조건으로 자료를 DM하는 방식</dd>
-          <dt>키워드 댓글</dt><dd>이벤트 참여 지정 단어 댓글 (매니챗 자동 DM)</dd>
-          <dt>주제 축</dt><dd>취업 / 재테크 / 기타</dd>
-        </dl>
-      </div>
-      <div class="sub">
-        <h3>출처</h3>
-        <div class="legend">
-          <span><span class="src">진단</span> <b>「현증선배 인스타그램 콘텐츠 진단」</b> — 책임님(정오근) 작성 · Supermetrics Studio · 2026.01~ · IG Insights 실시간 + 주간 추적 시트</span>
-          <span><span class="src">IG</span> <b>인스타그램 인사이트</b> — 마케팅팀 제공</span>
-          <span><span class="src">SB</span> <b>SocialBiz</b> (NHN Data) — 댓글→DM · 발송 · 링크 클릭</span>
-          <span><span class="src">SM</span> <b>Supermetrics</b> — 30 / 90일 누적</span>
-        </div>
-      </div>
-      <div class="sub">
-        <h3>데이터 주석</h3>
-        <ul class="plain">
-          <li>게시물 단위 <b>팔로우 전환</b>은 IG API가 null 반환 → 주간 순증과 게시 시점 대조로 <b>추정</b>. 정확한 측정에는 instagram_manage_insights 권한 재확인 필요.</li>
-          <li>5/30 게시물 도달 76.5만은 좋아요율 0.08%로 <b>광고 집행분 추정</b> (Meta Ads 캠페인 매칭 미실시).</li>
-          <li>콘텐츠 축 분류는 캡션 키워드 자동 분류 — 일부 게시물은 양쪽에 걸침.</li>
-          <li>월별 팔로워 순증은 주간 추적 시트 고정. 게시 물량·게시물 지표는 조회 시점 갱신.</li>
-          <li>영상 <b>시청 유지율</b>(자막·질문별 이탈)은 IG 앱 화면으로만 확인 — 마케팅팀 스크린샷 제공 시 게시물별 표에 기재.</li>
-        </ul>
-      </div>
-      <div class="sub">
-        <div class="rulebox">판단 규칙 — 3회차·30건에 못 미치면 「아직 판단 불가」. 2배 미만 격차·누적 5건 미만은 판단하지 않는다.</div>
-      </div>
+    <div class="panel">
+      <h3>2주차부터 채워지는 것</h3>
+      <p class="p-cap">리포트 신규 추가분 · 대시보드가 다루지 않는 주간 추적</p>
+      <p style="font-size:12px;margin:0">3기 첫 발행(9/8) 전이라 “이번 주 성과” 비교가 없음. 2주차부터 매주 아래가 채워지고, 맨 위에 <b>이번 주 한 줄 요약</b> + <b>다음 주 액션 3건</b>이 붙습니다.</p>
+      <ul class="plain">
+        <li>게시 건수 — 하한 주 3 / 월 12 대비</li>
+        <li>도달 · 논팔로워 비중 · <b>저장·공유율</b>(좋아요보다 앞에)</li>
+        <li>게시물별 성과 — 도달·저장·공유·팔로우 순증(추정)</li>
+        <li>매니챗 흐름 — <b>키워드 댓글 수 → DM 발송 수 → 링크 클릭 수</b></li>
+        <li>주제 축(취업/재테크/기타)별 게시물당 도달 + 한 줄 해석</li>
+      </ul>
     </div>
-  </details>
+  </div>
 
-  <footer class="foot">현증선배 주간 리포트 · W1 기준선판 · 최지연(서포터즈 운영팀) 작성 · 데이터 출처 책임님 진단 대시보드</footer>
+  <footer class="foot">
+    <div class="twocol">
+      <p><b>용어</b> — 도달: 게시물을 본 사람 수 · 논팔로워 도달: 그중 팔로우 안 한 사람 · 저장·공유: 좋아요보다 강한 신호 · 저장+공유율: (저장+공유)÷도달 · 팔로워 순증: 새 팔로우−언팔 · 팔로우 게이팅: 팔로우·댓글을 조건으로 자료 DM · 키워드 댓글: 이벤트 참여 지정 단어 댓글(매니챗 자동 DM).</p>
+      <p><b>데이터 주석</b> — ① 게시물 단위 팔로우 전환은 IG API가 null 반환 → 주간 순증과 게시 시점 대조로 추정. ② 5/30 도달 76.5만은 좋아요율 0.08%로 광고 집행분 추정(Meta Ads 매칭 미실시). ③ 콘텐츠 축은 캡션 키워드 자동 분류 — 일부 게시물은 양쪽에 걸침. ④ 월별 팔로워 순증은 주간 추적 시트 고정, 게시 물량·게시물 지표는 조회 시점 갱신. ⑤ 위 월별 차트의 월 단위 값은 대시보드 기간 합계(4–5월 +2,085 / 6–8월 +167 / 8월 −45)에 맞춘 근사 배분. ⑥ 영상 시청 유지율(자막·질문별 이탈)은 IG 앱 화면으로만 확인 — 마케팅팀 스크린샷 필요.</p>
+    </div>
+    <div class="twocol" style="margin-top:6px">
+      <p><b>판단 규칙</b> — 3회차·30건에 못 미치면 「아직 판단 불가」. 2배 미만 격차·누적 5건 미만은 판단하지 않는다.</p>
+      <p><b>출처</b> — 진단: 「현증선배 인스타그램 콘텐츠 진단」(책임님·정오근, Supermetrics Studio) / IG 인사이트(마케팅팀) / SocialBiz(NHN Data, 매니챗) / Supermetrics(30·90일 누적).</p>
+    </div>
+    <p class="fl">현증선배 주간 리포트 · W1 기준선판 (책임님 대시보드 양식 기준) · 최지연(서포터즈 운영팀)</p>
+  </footer>
 
 </div>
 
 <script>
   (function () {
     var root = document.documentElement;
-
     var TKEY = 'hjsb-theme';
     try { var s = localStorage.getItem(TKEY); if (s === 'dark' || s === 'light') root.setAttribute('data-theme', s); } catch (e) {}
     document.getElementById('themeBtn').addEventListener('click', function () {
@@ -672,39 +524,74 @@
       var next = cur === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       try { localStorage.setItem(TKEY, next); } catch (e) {}
+      redraw();
     });
 
-    var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
-    var FKEY = 'hjsb-folds-w1';
-    var state = {};
-    try { state = JSON.parse(localStorage.getItem(FKEY) || '{}'); } catch (e) { state = {}; }
-    folds.forEach(function (d) {
-      if (state[d.id]) d.open = true;
-      d.addEventListener('toggle', function () {
-        state[d.id] = d.open;
-        try { localStorage.setItem(FKEY, JSON.stringify(state)); } catch (e) {}
-        syncBtn();
+    var NS = 'http://www.w3.org/2000/svg';
+    function css(v) { return getComputedStyle(document.body).getPropertyValue(v).trim(); }
+    function el(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
+    function txt(svg, x, y, t, col, anchor, sz) {
+      var e = el('text', { x: x, y: y, fill: col, 'text-anchor': anchor || 'middle', 'font-size': sz || 9, 'font-family': 'IBM Plex Mono, monospace' });
+      e.textContent = t; svg.appendChild(e);
+    }
+
+    function drawCombo(svg) {
+      var bars = JSON.parse(svg.getAttribute('data-bars'));
+      var line = JSON.parse(svg.getAttribute('data-line'));
+      var labels = JSON.parse(svg.getAttribute('data-labels'));
+      var W = 460, H = 210, padL = 40, padR = 34, padT = 14, padB = 22;
+      var pw = W - padL - padR, ph = H - padT - padB;
+      var bmax = Math.max.apply(null, bars), bmin = Math.min(0, Math.min.apply(null, bars));
+      var bstep = niceStep(bmax); bmax = Math.ceil(bmax / bstep) * bstep;
+      if (bmin < 0) bmin = -Math.ceil(-bmin / bstep) * bstep;
+      var brange = bmax - bmin || 1;
+      var lmax = Math.max.apply(null, line); var lstep = niceStep(lmax); lmax = Math.ceil(lmax / lstep) * lstep;
+      var accent = css('--accent'), gold = css('--gold'), neg = css('--neg'), ink = css('--ink-faint'), grid = css('--line');
+      var zeroY = padT + (bmax / brange) * ph;
+
+      // gridlines + left axis (bars)
+      for (var g = bmin; g <= bmax + 0.001; g += bstep) {
+        var gy = padT + ((bmax - g) / brange) * ph;
+        svg.appendChild(el('line', { x1: padL, y1: gy, x2: W - padR, y2: gy, stroke: grid, 'stroke-width': g === 0 ? 1.2 : 0.6 }));
+        txt(svg, padL - 6, gy + 3, fmt(g), ink, 'end', 8.5);
+      }
+      // right axis (line)
+      for (var r = 0; r <= lmax + 0.001; r += lstep) {
+        var ry = padT + (1 - r / lmax) * ph;
+        txt(svg, W - padR + 6, ry + 3, String(r), gold, 'start', 8.5);
+      }
+
+      var slot = pw / bars.length, bw = slot * 0.5;
+      bars.forEach(function (v, i) {
+        var cx = padL + slot * (i + 0.5);
+        var vy = padT + ((bmax - v) / brange) * ph;
+        svg.appendChild(el('rect', { x: cx - bw / 2, y: Math.min(vy, zeroY), width: bw, height: Math.max(Math.abs(vy - zeroY), 1), rx: 2, fill: v < 0 ? neg : accent }));
+        txt(svg, cx, H - padB + 12, labels[i], ink, 'middle', 8.5);
       });
-    });
-    var fa = document.getElementById('foldAll');
-    function allOpen() { return folds.every(function (d) { return d.open; }); }
-    function syncBtn() { fa.textContent = allOpen() ? '모두 접기' : '모두 펼치기'; }
-    fa.addEventListener('click', function () {
-      var open = !allOpen();
-      folds.forEach(function (d) { d.open = open; });
-      syncBtn();
-    });
-    syncBtn();
 
-    var snap = null;
-    window.addEventListener('beforeprint', function () {
-      snap = folds.map(function (d) { return d.open; });
-      folds.forEach(function (d) { d.open = true; });
-    });
-    window.addEventListener('afterprint', function () {
-      if (snap) folds.forEach(function (d, i) { d.open = snap[i]; });
-      snap = null;
-    });
+      var pts = line.map(function (v, i) { return [padL + slot * (i + 0.5), padT + (1 - v / lmax) * ph]; });
+      svg.appendChild(el('path', { d: pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' '), fill: 'none', stroke: gold, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+      pts.forEach(function (p) { svg.appendChild(el('circle', { cx: p[0], cy: p[1], r: 2.6, fill: gold })); });
+    }
+    function niceStep(m) {
+      m = Math.abs(m) || 1;
+      var p = Math.pow(10, Math.floor(Math.log10(m)));
+      var n = m / p;
+      var s = (n <= 2 ? 0.5 : n <= 5 ? 1 : 2) * p;
+      return s || 1;
+    }
+    function fmt(n) { return n.toLocaleString('en-US'); }
+
+    function redraw() {
+      document.querySelectorAll('svg[data-combo]').forEach(function (s) {
+        if (!s.getClientRects().length) return;
+        while (s.firstChild) s.removeChild(s.firstChild);
+        drawCombo(s);
+      });
+    }
+    redraw();
+    var rt;
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(redraw, 180); });
   })();
 </script>
 
