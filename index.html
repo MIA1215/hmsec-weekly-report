@@ -257,7 +257,8 @@
   }
   table.grid th { color: var(--ink-faint); font-weight: 600; font-size: 10px; }
   table.grid th.l, table.grid td.l { text-align: left; }
-  table.grid td.l.t { white-space: normal; line-height: 1.35; padding-right: 12px; }
+  table.grid td.l { white-space: normal; line-height: 1.35; }
+  table.grid td.l.t { padding-right: 12px; }
   table.grid tr:last-child td { border-bottom: none; }
   table.grid .hi { color: var(--accent); font-weight: 700; }
   .tg { font-family: var(--mono); font-size: 8.5px; border-radius: 3px; padding: 0 3px; border: 1px solid var(--line-strong); color: var(--ink-faint); white-space: nowrap; }
@@ -474,6 +475,21 @@
     </div>
   </div>
 
+  <p class="sh">이번 기수 목표선 <span class="note">리포트 신규 · 책임님 진단 결론을 숫자 목표로</span></p>
+  <div class="panel">
+    <p class="p-cap">2주차부터 이 표의 「현재」 열이 매주 채워지며 목표 대비 격차를 추적합니다.</p>
+    <table class="grid">
+      <thead><tr><th class="l">지표</th><th class="l">기준선 (2026.01–08)</th><th class="l">3기 목표</th><th class="l">추적</th></tr></thead>
+      <tbody>
+        <tr><td class="l">게시 물량</td><td class="l">8월 4건 · 6–8월 월 10건</td><td class="l"><b>월 12건 이상</b></td><td class="l">매주</td></tr>
+        <tr><td class="l">직무 인터뷰 편성</td><td class="l">비정기</td><td class="l"><b>주 2회 · 월 8건</b></td><td class="l">매주</td></tr>
+        <tr><td class="l">자소서 나눔 (팔로우 게이팅)</td><td class="l">이벤트성 부정기</td><td class="l"><b>월 1회 고정</b></td><td class="l">매월</td></tr>
+        <tr><td class="l">게시물당 팔로워 순증</td><td class="l">6–8월 5.6명</td><td class="l"><b>15명+ 회복</b> <span class="fill">(4–5월 30.7 = 정상치)</span></td><td class="l">매주</td></tr>
+        <tr><td class="l">취업 : 재테크 도달비</td><td class="l">15배 (36,222 vs 2,430)</td><td class="l">재테크 본계정 이관 → <b>취업 100%</b></td><td class="l">매월</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="grid2">
     <div class="panel">
       <h3>이번 주 발행 계획 (9/7–11)</h3>
@@ -486,17 +502,32 @@
       </div>
     </div>
 
-    <div class="panel">
-      <h3>2주차부터 채워지는 것</h3>
-      <p class="p-cap">리포트 신규 추가분 · 대시보드가 다루지 않는 주간 추적</p>
-      <p style="font-size:12px;margin:0">3기 첫 발행(9/8) 전이라 “이번 주 성과” 비교가 없음. 2주차부터 매주 아래가 채워지고, 맨 위에 <b>이번 주 한 줄 요약</b> + <b>다음 주 액션 3건</b>이 붙습니다.</p>
-      <ul class="plain">
-        <li>게시 건수 — 하한 주 3 / 월 12 대비</li>
-        <li>도달 · 논팔로워 비중 · <b>저장·공유율</b>(좋아요보다 앞에)</li>
-        <li>게시물별 성과 — 도달·저장·공유·팔로우 순증(추정)</li>
-        <li>매니챗 흐름 — <b>키워드 댓글 수 → DM 발송 수 → 링크 클릭 수</b></li>
-        <li>주제 축(취업/재테크/기타)별 게시물당 도달 + 한 줄 해석</li>
-      </ul>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="panel">
+        <h3>매니챗 세팅 현황</h3>
+        <p class="p-cap">리포트 신규 · <b>틀만 잡음</b> — 9/7(월) 밤 회의에서 확정 → 오후 11시 이후 이 섹션만 갱신</p>
+        <table class="grid">
+          <thead><tr><th class="l">#</th><th class="l">트리거 (발행물)</th><th class="l">보낼 페이지</th><th class="l">세팅</th></tr></thead>
+          <tbody>
+            <tr><td class="l">1</td><td class="l">9/8 발대식 브이로그</td><td class="l fill">회의 후 확정</td><td class="l fill">—</td></tr>
+            <tr><td class="l">2</td><td class="l">9/9 무물 릴스</td><td class="l fill">회의 후 확정</td><td class="l fill">—</td></tr>
+            <tr><td class="l">3</td><td class="l">9/10 무물 카드뉴스</td><td class="l fill">회의 후 확정</td><td class="l fill">—</td></tr>
+          </tbody>
+        </table>
+        <p class="p-foot">세팅 담당 김시연 · 이벤트 페이지 고예원. 세팅은 링크 없어도 선행 가능.</p>
+      </div>
+
+      <div class="panel">
+        <h3>2주차부터 채워지는 것</h3>
+        <p class="p-cap">리포트 신규 · 대시보드가 다루지 않는 주간 추적</p>
+        <p style="font-size:12px;margin:0">3기 첫 발행(9/8) 전이라 “이번 주 성과” 비교가 없음. 2주차부터 아래가 매주 채워지고, 맨 위에 <b>이번 주 한 줄 요약</b> + <b>다음 주 액션 3건</b>이 붙습니다.</p>
+        <ul class="plain">
+          <li>게시 건수 · 도달 · 논팔로워 비중 · <b>저장·공유율</b>(좋아요보다 앞에)</li>
+          <li>게시물별 성과 — 도달·저장·공유·팔로우 순증(추정)</li>
+          <li>매니챗 흐름 — <b>키워드 댓글 수 → DM 발송 수 → 링크 클릭 수</b></li>
+          <li>주제 축(취업/재테크/기타)별 게시물당 도달 + 한 줄 해석</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -509,7 +540,7 @@
       <p><b>판단 규칙</b> — 3회차·30건에 못 미치면 「아직 판단 불가」. 2배 미만 격차·누적 5건 미만은 판단하지 않는다.</p>
       <p><b>출처</b> — 진단: 「현증선배 인스타그램 콘텐츠 진단」(책임님·정오근, Supermetrics Studio) / IG 인사이트(마케팅팀) / SocialBiz(NHN Data, 매니챗) / Supermetrics(30·90일 누적).</p>
     </div>
-    <p class="fl">현증선배 주간 리포트 · W1 기준선판 (책임님 대시보드 양식 기준) · 최지연(서포터즈 운영팀)</p>
+    <p class="fl">현증선배 주간 리포트 · W1 기준선판 · 최지연(서포터즈 운영팀) · 매니챗 세팅 현황은 9/7 밤 회의 후 갱신 예정</p>
   </footer>
 
 </div>
