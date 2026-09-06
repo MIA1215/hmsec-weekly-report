@@ -87,7 +87,6 @@
   .tnum { font-variant-numeric: tabular-nums; }
   .fill { color: var(--ink-faint); font-style: italic; }
 
-  /* ---- shell ---- */
   .topbar {
     position: sticky;
     top: 0;
@@ -132,7 +131,6 @@
     padding: 30px 24px 72px;
   }
 
-  /* ---- masthead ---- */
   .mast h1 {
     margin: 0 0 6px;
     font-size: 25px;
@@ -146,84 +144,28 @@
     color: var(--ink-muted);
   }
   .mast .dateline b { color: var(--ink); font-weight: 500; }
-  .sample {
-    margin-top: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: var(--warn-weak);
-    color: var(--warn);
-    border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent);
-    border-radius: 7px;
-    padding: 6px 11px;
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  /* ---- headline ---- */
-  .headline {
-    margin: 26px 0 22px;
-    padding-left: 16px;
-    border-left: 3px solid var(--accent);
-    font-size: 16px;
-    line-height: 1.6;
-    font-weight: 500;
-  }
-  .headline b { font-weight: 700; }
-  .headline .eyebrow {
-    display: block;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    font-weight: 500;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 7px;
-  }
-
-  /* ---- hero KPIs ---- */
-  .kpis {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 30px;
-  }
-  .kpi {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 14px 15px 12px;
-    box-shadow: var(--shadow);
+  .baseline-note {
+    margin: 14px 0 4px;
     display: flex;
-    flex-direction: column;
-    gap: 3px;
-    min-width: 0;
+    gap: 9px;
+    align-items: baseline;
+    background: var(--accent-weak);
+    color: var(--ink);
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    border-radius: 8px;
+    padding: 9px 13px;
+    font-size: 12.5px;
+    line-height: 1.5;
   }
-  .kpi .k-label {
+  .baseline-note .bn-dot { color: var(--accent); font-weight: 700; }
+  .src-link {
     font-size: 11.5px;
-    color: var(--ink-muted);
-    font-weight: 500;
+    font-family: var(--mono);
+    margin: 6px 0 0;
   }
-  .kpi .k-val {
-    font-size: 27px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-  }
-  .kpi .k-delta {
-    font-size: 11.5px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .k-delta.down { color: var(--neg); }
-  .k-delta.up { color: var(--pos); }
-  .k-delta.flat { color: var(--ink-faint); }
-  .kpi svg.spark { margin-top: 6px; display: block; width: 100%; height: 30px; }
-  .kpi .k-foot { font-size: 10.5px; color: var(--ink-faint); font-family: var(--mono); }
+  .src-link a { color: var(--accent); text-decoration: none; word-break: break-all; }
+  .src-link a:hover { text-decoration: underline; }
 
-  /* ---- actions (priority order = real sequence) ---- */
   .block-h {
     font-size: 12px;
     font-weight: 600;
@@ -231,55 +173,80 @@
     text-transform: uppercase;
     color: var(--ink-faint);
     font-family: var(--mono);
-    margin: 0 0 12px;
+    margin: 30px 0 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
   }
-  ol.actions {
+  .block-h .src {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 400;
+    color: var(--ink-faint);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0 4px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* baseline KPI tiles */
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 13px 14px 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+  .kpi .k-label { font-size: 11px; color: var(--ink-muted); font-weight: 500; }
+  .kpi .k-val {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .kpi .k-val.neg { color: var(--neg); }
+  .kpi .k-note { font-size: 10.5px; color: var(--ink-faint); font-family: var(--mono); margin-top: 2px; }
+
+  /* direction list — 책임님 numbered (real sequence) */
+  ol.dir {
     list-style: none;
-    counter-reset: a;
-    margin: 0 0 8px;
+    counter-reset: d;
+    margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 2px;
   }
-  ol.actions li {
-    counter-increment: a;
+  ol.dir li {
+    counter-increment: d;
     display: grid;
-    grid-template-columns: 26px 1fr;
-    gap: 12px;
-    padding: 12px 0;
+    grid-template-columns: 30px 1fr;
+    gap: 13px;
+    padding: 13px 0;
     border-top: 1px solid var(--line);
   }
-  ol.actions li:last-child { border-bottom: 1px solid var(--line); }
-  ol.actions li::before {
-    content: counter(a);
+  ol.dir li:last-child { border-bottom: 1px solid var(--line); }
+  ol.dir li::before {
+    content: "0" counter(d);
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     color: var(--accent);
-    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-    border-radius: 6px;
-    height: 22px;
-    display: grid;
-    place-items: center;
   }
-  ol.actions .a-do { font-size: 13.5px; font-weight: 500; }
-  ol.actions .a-meta { margin-top: 5px; display: flex; gap: 6px; flex-wrap: wrap; }
-  .chip {
-    font-size: 11px;
-    font-family: var(--mono);
-    background: var(--sink);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 1px 7px;
-    color: var(--ink-muted);
-  }
-  .chip b { color: var(--ink); font-weight: 500; }
+  ol.dir .d-t { font-size: 13.5px; font-weight: 600; }
+  ol.dir .d-d { font-size: 12.5px; color: var(--ink-muted); margin-top: 3px; }
 
-  /* ---- collapsible sections ---- */
-  .fold {
-    border-top: 1px solid var(--line-strong);
-  }
+  /* collapsible sections */
+  .fold { border-top: 1px solid var(--line-strong); }
   .fold:last-of-type { border-bottom: 1px solid var(--line-strong); }
   .fold > summary {
     list-style: none;
@@ -299,12 +266,7 @@
   }
   @media (prefers-reduced-motion: reduce) { .fold > summary .tw { transition: none; } }
   .fold[open] > summary .tw { transform: rotate(90deg) translateX(1px); }
-  .fold > summary h2 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
+  .fold > summary h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
   .fold > summary .teaser {
     margin-left: auto;
     font-size: 11.5px;
@@ -313,17 +275,8 @@
     font-family: var(--mono);
     padding-left: 12px;
   }
-  .fold-body {
-    padding: 4px 2px 26px;
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
-  }
-  .sub {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-  }
+  .fold-body { padding: 4px 2px 26px; display: flex; flex-direction: column; gap: 26px; }
+  .sub { display: flex; flex-direction: column; gap: 9px; }
   .sub > h3 {
     margin: 0;
     font-size: 13.5px;
@@ -343,27 +296,21 @@
   }
   .sub .cap { font-size: 11.5px; color: var(--ink-muted); margin: -3px 0 3px; }
 
-  /* takeaway line — one consistent form */
   .take {
     font-size: 12.5px;
     line-height: 1.55;
     padding: 9px 0 0;
     border-top: 1px dashed var(--line);
   }
-  .take::before {
-    content: "→ ";
-    color: var(--accent);
-    font-weight: 700;
-  }
+  .take::before { content: "→ "; color: var(--accent); font-weight: 700; }
   .take b { color: var(--ink); font-weight: 600; }
 
-  /* metric rows — the workhorse */
   .rows { display: flex; flex-direction: column; }
   .mrow {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: baseline;
-    gap: 10px 14px;
+    gap: 4px 14px;
     padding: 9px 0;
     border-bottom: 1px solid var(--line);
   }
@@ -376,76 +323,23 @@
     font-size: 10.5px;
     color: var(--ink-faint);
     font-family: var(--mono);
-    margin-top: -3px;
+    margin-top: -2px;
   }
-  .mrow.gone .m-k { text-decoration: line-through; color: var(--ink-faint); }
-  .mrow svg.spark { width: 96px; height: 24px; display: block; }
-  .mrow .m-mid {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: flex-end;
-  }
-  .delta { font-size: 11px; font-weight: 600; font-family: var(--mono); white-space: nowrap; }
-  .delta.down { color: var(--neg); }
-  .delta.up { color: var(--pos); }
-  .delta.flat { color: var(--ink-faint); }
 
-  /* judgement rows (good / bad / next) */
-  .judge { display: flex; flex-direction: column; gap: 0; }
-  .jrow {
-    display: grid;
-    grid-template-columns: 66px 1fr;
-    gap: 12px;
-    padding: 11px 0;
-    border-bottom: 1px solid var(--line);
-    align-items: baseline;
-  }
-  .jrow:first-child { border-top: 1px solid var(--line); }
-  .jrow .j-tag {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .02em;
-  }
-  .jrow.good .j-tag { color: var(--pos); }
-  .jrow.bad .j-tag { color: var(--neg); }
-  .jrow.next .j-tag { color: var(--accent); }
-  .jrow .j-txt { font-size: 13px; }
-  .jrow .j-why { display: block; font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; }
+  .abar { display: grid; grid-template-columns: 150px 1fr; gap: 6px 12px; align-items: center; font-size: 12px; padding: 6px 0; }
+  .abar .a-lab { font-weight: 500; }
+  .abar .a-track { background: var(--sink); border-radius: 4px; height: 22px; overflow: hidden; }
+  .abar .a-fill { height: 100%; background: var(--accent); border-radius: 4px; min-width: 3px; }
+  .abar .a-v { grid-column: 2; font-size: 11px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+  .abar .a-v b { color: var(--ink); }
 
-  /* alerts */
-  .alerts { display: flex; flex-direction: column; gap: 7px; }
-  .alert {
-    display: grid;
-    grid-template-columns: 52px 1fr;
-    gap: 10px;
-    align-items: baseline;
-    padding: 9px 12px;
-    border-radius: 8px;
-    border: 1px solid var(--line);
-    border-left-width: 3px;
-    font-size: 12.5px;
-    background: var(--surface);
-  }
-  .alert.crit { border-left-color: var(--neg); background: color-mix(in srgb, var(--neg-weak) 55%, var(--surface)); }
-  .alert.warn { border-left-color: var(--warn); background: color-mix(in srgb, var(--warn-weak) 55%, var(--surface)); }
-  .alert .al-tag { font-size: 10px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; font-family: var(--mono); }
-  .alert.crit .al-tag { color: var(--neg); }
-  .alert.warn .al-tag { color: var(--warn); }
-
-  /* tables */
   .tscroll {
     overflow-x: auto;
     border: 1px solid var(--line);
     border-radius: 9px;
     -webkit-overflow-scrolling: touch;
   }
-  table.grid {
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 12px;
-    min-width: 520px;
-  }
+  table.grid { border-collapse: collapse; width: 100%; font-size: 12px; min-width: 480px; }
   table.grid th, table.grid td {
     padding: 8px 11px;
     text-align: right;
@@ -453,112 +347,62 @@
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
   }
-  table.grid th {
-    background: var(--sink);
-    font-weight: 600;
-    color: var(--ink-muted);
-    font-size: 10.5px;
-    position: sticky;
-    top: 0;
-  }
+  table.grid th { background: var(--sink); font-weight: 600; color: var(--ink-muted); font-size: 10.5px; }
   table.grid th.l, table.grid td.l { text-align: left; }
   table.grid tr:last-child td { border-bottom: none; }
-  table.grid tr.total td { font-weight: 700; background: var(--sink); }
   table.grid .hi { color: var(--accent); font-weight: 700; }
-  .est {
+  table.grid td.l.title { white-space: normal; min-width: 220px; }
+  .tag {
     font-family: var(--mono);
     font-size: 9px;
-    color: var(--warn);
-    border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent);
     border-radius: 3px;
-    padding: 0 3px;
-  }
-  .ref {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--ink-faint);
+    padding: 0 4px;
     border: 1px solid var(--line-strong);
-    border-radius: 3px;
-    padding: 0 3px;
+    color: var(--ink-faint);
   }
+  .tag.job { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+  .tag.mny { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, transparent); }
+  .est { font-family: var(--mono); font-size: 9px; color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent); border-radius: 3px; padding: 0 3px; }
 
-  /* charts */
-  .charts2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .chart .c-h { font-size: 11px; color: var(--ink-muted); font-family: var(--mono); margin-bottom: 4px; }
-  .chart svg { width: 100%; height: 118px; display: block; }
+  ul.plain { margin: 0; padding-left: 17px; display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; }
+  ul.plain li::marker { color: var(--ink-faint); }
 
-  /* funnel */
-  .funnel { display: flex; flex-direction: column; gap: 6px; }
-  .frow { display: grid; grid-template-columns: 116px 1fr 118px; align-items: center; gap: 10px; font-size: 12px; }
-  .frow .f-lab { color: var(--ink-muted); }
-  .frow .f-track { background: var(--sink); border-radius: 4px; height: 24px; overflow: hidden; }
-  .frow .f-bar {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    padding-left: 9px;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-    min-width: 3px;
+  .cal { display: flex; flex-direction: column; }
+  .crow {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 12.5px;
+    align-items: baseline;
   }
-  .frow .f-side { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-muted); }
-  .frow .f-side b { color: var(--ink); }
-  .frow .f-side .cv { color: var(--pos); font-weight: 700; }
-  .frow.drop .f-side .cv { color: var(--neg); }
-  .f-note { font-size: 11px; color: var(--ink-faint); font-family: var(--mono); padding-left: 126px; margin-top: -2px; }
-  .f-max { font-size: 12px; background: var(--neg-weak); color: var(--ink); border-radius: 8px; padding: 8px 11px; }
-  .f-max b { color: var(--neg); }
+  .crow:first-child { border-top: 1px solid var(--line); }
+  .crow .c-d { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); }
+  .crow .c-mc { display: block; font-size: 10.5px; color: var(--accent); font-family: var(--mono); margin-top: 3px; }
 
-  /* series lines */
-  .series { display: flex; flex-direction: column; gap: 4px; }
-  .srow { display: grid; grid-template-columns: 128px 1fr 140px; align-items: center; gap: 10px; font-size: 12px; padding: 4px 0; }
-  .srow svg { width: 100%; height: 40px; }
-  .srow .s-v { text-align: right; font-size: 11px; color: var(--ink-muted); }
-  .srow .s-v.na { color: var(--ink-faint); font-style: italic; }
-
-  /* axis bars (topic) */
-  .abar { display: grid; grid-template-columns: 128px 1fr; gap: 6px 12px; align-items: center; font-size: 12px; padding: 5px 0; }
-  .abar .a-track { background: var(--sink); border-radius: 4px; height: 22px; overflow: hidden; }
-  .abar .a-fill { height: 100%; background: var(--accent); border-radius: 4px; }
-  .abar .a-v { grid-column: 2; font-size: 11px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
-  .abar .a-v b { color: var(--ink); }
-
-  /* experiment */
-  .exp { border: 1px solid var(--line); border-radius: 9px; padding: 12px 14px; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
-  .exp .e-body { font-size: 12.5px; display: flex; flex-direction: column; gap: 4px; }
-  .exp .e-k { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .03em; color: var(--ink-faint); margin-right: 5px; }
-  .exp .e-status {
-    text-align: center;
-    border: 1px solid var(--warn);
-    color: var(--warn);
-    background: var(--warn-weak);
-    border-radius: 9px;
-    padding: 8px 14px;
-    font-size: 11px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-  .exp .e-status b { display: block; font-size: 16px; margin: 1px 0; }
-
-  /* prose list (risk / contribution) */
-  .plist { margin: 0; padding-left: 16px; display: flex; flex-direction: column; gap: 5px; font-size: 12.5px; }
-  .rc { display: flex; gap: 8px; align-items: baseline; font-size: 12.5px; padding: 6px 0; border-bottom: 1px solid var(--line); }
-  .rc:first-child { border-top: 1px solid var(--line); }
-  .rc .dot { width: 6px; height: 6px; border-radius: 50%; flex: none; transform: translateY(-1px); }
-  .rc.ok .dot { background: var(--pos); }
-  .rc.watch .dot { background: var(--warn); }
-
-  /* glossary */
   .gloss { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 20px; font-size: 12px; }
   .gloss dt { font-weight: 600; margin-top: 8px; }
   .gloss dd { margin: 0; color: var(--ink-muted); }
-  .legend { display: flex; flex-direction: column; gap: 4px; font-size: 12px; }
+  .legend { display: flex; flex-direction: column; gap: 5px; font-size: 12px; }
   .legend b { color: var(--ink); }
-  .rulebox { background: var(--warn-weak); border: 1px solid color-mix(in srgb, var(--warn) 28%, transparent); color: var(--warn); border-radius: 8px; padding: 9px 12px; font-size: 12px; font-weight: 500; }
+  .legend .src {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--ink-faint);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0 4px;
+  }
+  .rulebox {
+    background: var(--warn-weak);
+    border: 1px solid color-mix(in srgb, var(--warn) 28%, transparent);
+    color: var(--warn);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
   .rollup { background: var(--sink); border-radius: 8px; padding: 9px 12px; font-size: 12px; }
   .rollup b { color: var(--ink); }
 
@@ -571,23 +415,15 @@
     font-family: var(--mono);
   }
 
-  @media (max-width: 760px) {
-    .kpis { grid-template-columns: 1fr; }
-    .charts2 { grid-template-columns: 1fr; }
+  @media (max-width: 720px) {
     .gloss { grid-template-columns: 1fr; }
     .fold > summary .teaser { display: none; }
-    .frow { grid-template-columns: 96px 1fr; }
-    .frow .f-side { grid-column: 1 / -1; text-align: left; }
-    .f-note { padding-left: 0; }
-    .srow { grid-template-columns: 110px 1fr; }
-    .srow .s-v { grid-column: 1 / -1; text-align: left; }
-    .abar { grid-template-columns: 100px 1fr; }
+    .abar { grid-template-columns: 116px 1fr; }
+    .crow { grid-template-columns: 64px 1fr; }
   }
-
   @media print {
     .topbar { display: none; }
-    .fold, .fold:last-of-type { border-color: #bbb; }
-    .kpi, .exp, .tscroll { box-shadow: none; }
+    .kpi, .tscroll { box-shadow: none; }
     body { background: #fff; }
   }
 </style>
@@ -606,307 +442,192 @@
 
   <div class="mast">
     <h1>현증선배 인스타그램 주간 리포트</h1>
-    <div class="dateline"><b>W36</b> · 2026.08.31 – 09.06 &nbsp;·&nbsp; 작성 09.07 (월) 09:40</div>
-    <div class="sample">● 샘플 데이터 — 실제 수치가 아니라 양식 구조를 보기 위한 예시(W36 가정)입니다.</div>
+    <div class="dateline"><b>W1</b> · 2026.09.07 (월) 작성 &nbsp;·&nbsp; 3기 활동 시작주 (첫 발행 9/8)</div>
+    <div class="baseline-note">
+      <span class="bn-dot">●</span>
+      <span><b>1주차 = 기준선 리포트.</b> 아래 지표·진단은 책임님 「현증선배 인스타그램 콘텐츠 진단」 대시보드(2026.01–08 실측)에서 가져왔습니다. 3기 첫 발행이 9/8이라 <b>주간 성과 비교는 2주차부터</b> 시작됩니다.</span>
+    </div>
+    <p class="src-link">원본 대시보드 → <a href="https://studio.supermetrics.com/d/834a76e5-2dd9-49ea-b223-a5d8ce8ae088" target="_blank" rel="noopener">studio.supermetrics.com/d/834a76e5…</a></p>
   </div>
 
-  <p class="headline">
-    <span class="eyebrow">이번 주 한 줄</span>
-    금요일 <b>자소서 나눔 영상</b> 하나가 이번 주 성과를 거의 다 만들었어요 (댓글 1,145개).
-    화·목에 올린 <b>재테크 콘텐츠 2개</b>는 3주째 반응이 약합니다. 게시물은 3개로 최소선.
-  </p>
-
+  <p class="block-h">기준선 지표 <span class="src">2026.01–08 · IG Insights + 주간 추적 시트</span></p>
   <div class="kpis">
     <div class="kpi">
-      <span class="k-label">팔로워 순증</span>
-      <span class="k-val tnum">+38</span>
-      <span class="k-delta down">▼ 지난주 +52</span>
-      <svg class="spark" data-spark data-values="[12,-8,5,18,-15,22,-45,38]" viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true"></svg>
-      <span class="k-foot">신규 71 · 이탈 33</span>
+      <span class="k-label">누적 게시물</span>
+      <span class="k-val tnum">112건</span>
+      <span class="k-note">2026년 1월 이후</span>
     </div>
     <div class="kpi">
-      <span class="k-label">게시물을 본 사람 (도달)</span>
-      <span class="k-val tnum">21.4만</span>
-      <span class="k-delta down">▼ 20.3%</span>
-      <svg class="spark" data-spark data-values="[188,201,143,388,262,171,92,214]" viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true"></svg>
-      <span class="k-foot">논팔로워 비중 74%</span>
+      <span class="k-label">게시물당 도달 · 취업</span>
+      <span class="k-val tnum">36,222</span>
+      <span class="k-note">재테크는 2,430 — 15배 차</span>
     </div>
     <div class="kpi">
-      <span class="k-label">저장·공유율</span>
-      <span class="k-val tnum">1.9%</span>
-      <span class="k-delta down">▼ 0.5%p</span>
-      <svg class="spark" data-spark data-values="[2.1,2.4,1.8,3.1,2.6,2.2,1.4,1.9]" viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true"></svg>
-      <span class="k-foot">저장 581 + 공유 795</span>
+      <span class="k-label">게시물당 팔로워 순증</span>
+      <span class="k-val tnum">30.7 → 5.6명</span>
+      <span class="k-note">4–5월 → 6–8월</span>
+    </div>
+    <div class="kpi">
+      <span class="k-label">8월 팔로워</span>
+      <span class="k-val tnum neg">−45명</span>
+      <span class="k-note">게시 물량 4건</span>
+    </div>
+    <div class="kpi">
+      <span class="k-label">최고 도달 게시물</span>
+      <span class="k-val tnum">765,672</span>
+      <span class="k-note">5글자 메시지 · 광고 추정</span>
     </div>
   </div>
 
-  <p class="block-h">다음 주 액션 3건 <span style="text-transform:none;font-weight:400;color:var(--ink-faint)">· 우선순위 순</span></p>
-  <ol class="actions">
+  <p class="block-h">이번 기수 운영 방향 <span class="src">책임님 진단 결론</span></p>
+  <ol class="dir">
     <li>
       <div>
-        <div class="a-do">자소서 나눔 다음 회차 소재 확정 <span class="fill">(검증된 전환 콘텐츠 · 격주 고정 검토)</span></div>
-        <div class="a-meta"><span class="chip">담당 <b>현증잡아</b></span><span class="chip">기한 <b>9/16</b></span></div>
+        <div class="d-t">정체성 재고정</div>
+        <div class="d-d">재테크 정보는 본 계정으로 이관. 현증선배는 “현직자가 알려주는 증권사 취업”으로 좁게 회귀. 하반기 공채 시즌과 타이밍 일치.</div>
       </div>
     </li>
     <li>
       <div>
-        <div class="a-do">재테크 주제 3주 성과 정리 → 유지 / 본계정 이관 논의 자료</div>
-        <div class="a-meta"><span class="chip">담당 <b>최지연</b></span><span class="chip">기한 <b>9/15</b></span></div>
+        <div class="d-t">직무 인터뷰 정규 편성</div>
+        <div class="d-d">IB·RA·해외주식·퇴직연금·IT편 모두 검증 완료. 소재 재고는 사내 보유. 주 2회 고정, 월 8건 기준.</div>
       </div>
     </li>
     <li>
       <div>
-        <div class="a-do">부스팅 게시물 유료/자연 도달 분리 룰 확정 <span class="fill">(게시물별 성과 표에 반영)</span></div>
-        <div class="a-meta"><span class="chip">담당 <b>최지연</b> · 마케팅팀</span><span class="chip">기한 <b>9/12</b></span></div>
+        <div class="d-t">팔로우 게이팅 상시화</div>
+        <div class="d-d">자소서 나눔이 유일하게 검증된 전환 기계 (댓글 936·1,145건). 이벤트성이 아닌 월 1회 고정 리소스로 운영.</div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <div class="d-t">부스팅 목표 재설계</div>
+        <div class="d-d">도달 76만에 주간 순증 200명. 도달 목적 집행 중단, 취업 관심사 타게팅 + 게이팅 게시물에 집중.</div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <div class="d-t">게시 물량 하한선</div>
+        <div class="d-d">월 4건으로는 노출 자체가 유지되지 않음 (8월 순감의 직접 원인). 서포터즈 3기 출범 기준 <b>월 12건 하한</b> 설정.</div>
       </div>
     </li>
   </ol>
 
   <!-- ===== FOLD 1 ===== -->
-  <details class="fold" id="f-judge">
-    <summary><span class="tw">▸</span><h2>이번 주 판단</h2><span class="teaser">잘된 것 · 아쉬운 것 · 경고 3건</span></summary>
+  <details class="fold" id="f-diag">
+    <summary><span class="tw">▸</span><h2>지난 8개월 진단</h2><span class="teaser">콘텐츠 축 격차 · 순증 붕괴 · 상·하위 게시물</span></summary>
     <div class="fold-body">
+
       <div class="sub">
-        <h3>무엇이 갈렸나</h3>
-        <div class="judge">
-          <div class="jrow good">
-            <span class="j-tag">잘된 것</span>
-            <span class="j-txt">취업 콘텐츠(자소서 나눔)가 재테크보다 <b>저장·공유 6배</b>.
-              <span class="j-why">취업 주제가 지금 팔로워에게 잘 맞음</span></span>
-          </div>
-          <div class="jrow bad">
-            <span class="j-tag">아쉬운 것</span>
-            <span class="j-txt">ETF 인터뷰 시리즈가 <b>3회차부터</b> 반응 하락 (2.6 → 1.9%).
-              <span class="j-why">같은 포맷 반복보다 주제를 바꿀 시점</span></span>
-          </div>
-          <div class="jrow next">
-            <span class="j-tag">다음 할 일</span>
-            <span class="j-txt">자소서 나눔 다음 회차 준비 · 재테크 지속 여부 회의 결정.
-              <span class="j-why">상세는 상단 ‘다음 주 액션 3건’</span></span>
-          </div>
+        <h3>콘텐츠 축별 성과 <span class="src">IG · 게시물당 평균</span></h3>
+        <p class="cap">캡션 키워드 자동 분류 · 막대 = 게시물 1건당 평균 도달</p>
+        <div>
+          <div class="abar"><span class="a-lab">취업·자소서·서포터즈</span><div class="a-track"><div class="a-fill" style="width:100%"></div></div><span class="a-v"><b>36,222</b> · 47건 · 저장 118 · 공유 206</span></div>
+          <div class="abar"><span class="a-lab">재테크 정보 카드뉴스</span><div class="a-track"><div class="a-fill" style="width:6.7%"></div></div><span class="a-v"><b>2,430</b> · 31건 · 저장 8 · 공유 11</span></div>
         </div>
+        <p class="take">취업이 재테크보다 <b>도달 15배 · 저장 15배 · 공유 19배</b>. 캡션 완성도는 재테크가 더 높은데도 저장·공유가 거의 없음 — 원인은 포맷·카피가 아니라 <b>확보한 오디언스(취준생)와 주제(사회초년생 재테크)의 불일치</b>. (책임님 진단)</p>
       </div>
 
       <div class="sub">
-        <h3>경고</h3>
-        <div class="alerts">
-          <div class="alert crit"><span class="al-tag">물량</span><span>게시물 <b>3개</b> — 최소선(주 3 / 월 12)에 겨우. 더 줄면 노출 감소.</span></div>
-          <div class="alert warn"><span class="al-tag">반응</span><span>저장·공유율 <b>2주 연속 하락</b> (2.4 → 1.9%).</span></div>
-          <div class="alert crit"><span class="al-tag">주제</span><span>재테크 <b>3주 연속</b> 평균 도달 3,000 미만 — 회의 안건.</span></div>
+        <h3>게시물당 팔로워 순증 붕괴</h3>
+        <div class="rows">
+          <div class="mrow"><span class="m-k">4–5월</span><span class="m-v tnum">30.7 <span class="u">명/건</span></span><span class="m-sub">게시 68건 → 팔로워 +2,085 · 연간 순증(2,780)의 75%</span></div>
+          <div class="mrow"><span class="m-k">6–8월</span><span class="m-v tnum">5.6 <span class="u">명/건</span></span><span class="m-sub">게시 30건 → 팔로워 +167</span></div>
+          <div class="mrow"><span class="m-k">8월</span><span class="m-v tnum">−45 <span class="u">명</span></span><span class="m-sub">게시 물량 4건 — 순감</span></div>
         </div>
+        <p class="take">물량이 줄면서 순증도 무너짐. 콘텐츠 축 이동(6월~)과 물량 감소가 겹친 구간.</p>
       </div>
+
+      <div class="sub">
+        <h3>도달 상위 게시물 <span class="src">IG</span></h3>
+        <div class="tscroll">
+          <table class="grid">
+            <thead><tr><th class="l">게시물</th><th class="l">축</th><th class="l">게시일</th><th>도달</th><th>저장</th><th>공유</th><th>댓글</th></tr></thead>
+            <tbody>
+              <tr><td class="l title">빈칸을 채우면 나오는 5글자 메시지</td><td class="l"><span class="tag job">취업</span></td><td class="l">2026-05-30</td><td class="hi">765,672</td><td>120</td><td>300</td><td>68</td></tr>
+              <tr><td class="l title">[현증 JOB아] 증권사 신입 이야기 1편</td><td class="l"><span class="tag job">취업</span></td><td class="l">2026-01-28</td><td>312,030</td><td>1,998</td><td>1,877</td><td>30</td></tr>
+              <tr><td class="l title">현대차증권 서포터즈 느좋.Zip</td><td class="l"><span class="tag job">취업</span></td><td class="l">2026-06-20</td><td>207,185</td><td>586</td><td>2,099</td><td>23</td></tr>
+              <tr><td class="l title">“자격증 많을수록 취업에 유리한가요?” [IB편]</td><td class="l"><span class="tag job">취업</span></td><td class="l">2026-04-08</td><td>50,026</td><td>320</td><td>736</td><td>35</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cap">5/30 게시물의 76.5만은 좋아요율 0.08%로 <span class="est">광고 집행분 추정</span> (Meta Ads 매칭 미실시).</p>
+      </div>
+
+      <div class="sub">
+        <h3>도달 하위 게시물 <span class="src">IG</span></h3>
+        <div class="tscroll">
+          <table class="grid">
+            <thead><tr><th class="l">게시물</th><th class="l">축</th><th class="l">게시일</th><th>도달</th><th>저장</th><th>공유</th><th>댓글</th></tr></thead>
+            <tbody>
+              <tr><td class="l title">2026년 개편된 청년혜택 총정리</td><td class="l"><span class="tag mny">재테크</span></td><td class="l">2026-04-03</td><td>550</td><td>11</td><td>12</td><td>0</td></tr>
+              <tr><td class="l title">2026 퇴직연금 개편안 총정리</td><td class="l"><span class="tag mny">재테크</span></td><td class="l">2026-03-28</td><td>556</td><td>2</td><td>0</td><td>0</td></tr>
+              <tr><td class="l title">외계어 같은 주식 용어</td><td class="l"><span class="tag">기타</span></td><td class="l">2026-03-27</td><td>600</td><td>4</td><td>8</td><td>3</td></tr>
+              <tr><td class="l title">주식 시작했는데 뭐부터 봐야 할지</td><td class="l"><span class="tag">기타</span></td><td class="l">2026-03</td><td>603</td><td>3</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="take">하위는 전부 재테크·기타. 상위 4건은 전부 취업. — 3기가 취업으로 좁히는 근거.</p>
+      </div>
+
     </div>
   </details>
 
   <!-- ===== FOLD 2 ===== -->
-  <details class="fold" id="f-score">
-    <summary><span class="tw">▸</span><h2>이번 주 성적표</h2><span class="teaser">확정 지표 5 · 8주 추이 · 게시물 3건</span></summary>
+  <details class="fold" id="f-weekly">
+    <summary><span class="tw">▸</span><h2>2주차부터 채워지는 것</h2><span class="teaser">주간 지표 · 매니챗 흐름 · 한 줄 해석</span></summary>
     <div class="fold-body">
-
       <div class="sub">
-        <h3>주간 확정 지표 <span class="src">IG</span><span class="src">SB</span></h3>
-        <p class="cap">최근 7일 · 전주 대비 · 저장·공유를 앞에</p>
-        <div class="rows">
-          <div class="mrow">
-            <span class="m-k">팔로워 순증</span>
-            <span class="m-mid"><svg class="spark" data-spark data-values="[12,-8,5,18,-15,22,-45,38]" viewBox="0 0 96 24" preserveAspectRatio="none" aria-hidden="true"></svg><span class="delta down">▼ 전주 +52</span><span class="m-v tnum">+38</span></span>
-            <span class="m-sub">신규 71 · 이탈 33</span>
-          </div>
-          <div class="mrow">
-            <span class="m-k">총 도달</span>
-            <span class="m-mid"><svg class="spark" data-spark data-values="[188,201,143,388,262,171,92,214]" viewBox="0 0 96 24" preserveAspectRatio="none" aria-hidden="true"></svg><span class="delta down">▼ 20.3%</span><span class="m-v tnum">214,300</span></span>
-            <span class="m-sub">논팔로워 비중 74%</span>
-          </div>
-          <div class="mrow">
-            <span class="m-k">저장 + 공유율</span>
-            <span class="m-mid"><svg class="spark" data-spark data-values="[2.1,2.4,1.8,3.1,2.6,2.2,1.4,1.9]" viewBox="0 0 96 24" preserveAspectRatio="none" aria-hidden="true"></svg><span class="delta down">▼ 0.5%p</span><span class="m-v tnum">1.9<span class="u">%</span></span></span>
-            <span class="m-sub">저장 581 + 공유 795</span>
-          </div>
-          <div class="mrow">
-            <span class="m-k">게시 건수</span>
-            <span class="m-mid"><svg class="spark" data-spark data-values="[4,3,2,4,3,2,2,3]" viewBox="0 0 96 24" preserveAspectRatio="none" aria-hidden="true"></svg><span class="delta flat">하한 주3 / 월12</span><span class="m-v tnum">3<span class="u">건</span></span></span>
-            <span class="m-sub">릴스 2 · 카드뉴스 1</span>
-          </div>
-          <div class="mrow">
-            <span class="m-k">키워드댓글 → 컨택</span>
-            <span class="m-mid"><svg class="spark" data-spark data-values="[74,68,71,80,77,73,79,82]" viewBox="0 0 96 24" preserveAspectRatio="none" aria-hidden="true"></svg><span class="delta up">▲ 3%p</span><span class="m-v tnum">82<span class="u">%</span></span></span>
-            <span class="m-sub">컨택 1,214 ÷ 키워드댓글 1,481</span>
-          </div>
-        </div>
+        <p style="font-size:12.5px;margin:0">1주차는 3기 첫 발행(9/8) 전이라 “이번 주 성과” 비교가 성립하지 않습니다. <b>2주차부터</b> 아래 항목이 매주 채워지고, 맨 위에 <b>이번 주 한 줄 요약</b>과 <b>다음 주 액션 3건</b>이 붙습니다.</p>
       </div>
-
       <div class="sub">
-        <h3>보조 지표</h3>
-        <div class="rows">
-          <div class="mrow"><span class="m-k">프로필 조회수</span><span class="m-mid"><span class="delta down">▼ 9%</span><span class="m-v tnum">4,120<span class="u">회</span></span></span></div>
-          <div class="mrow"><span class="m-k">외부 링크 클릭 (linktr.ee)</span><span class="m-mid"><span class="delta flat">신규 지표</span><span class="m-v tnum">296<span class="u">회</span></span></span></div>
-          <div class="mrow"><span class="m-k">도달 — 팔로워 / 논팔로워</span><span class="m-mid"><span class="delta flat">논팔로워 74%</span><span class="m-v tnum">55.7k / 158.6k</span></span></div>
-          <div class="mrow"><span class="m-k">주간 반응률</span><span class="m-mid"><span class="delta down">전주 3.6%</span><span class="m-v tnum">3.1<span class="u">%</span></span></span></div>
-        </div>
+        <h3>매주 추적할 지표</h3>
+        <ul class="plain">
+          <li>게시 건수 — 하한 주 3 / 월 12 대비</li>
+          <li>총 도달 · 논팔로워 비중</li>
+          <li><b>저장·공유율</b> — 좋아요보다 앞에 (다음 콘텐츠를 바꾸는 힘이 큼)</li>
+          <li>게시물별 성과 — 도달 · 저장 · 공유 · 팔로우 순증(추정)</li>
+          <li>매니챗 흐름 — <b>키워드 댓글 수 → DM 발송 수 → 링크 클릭 수</b></li>
+          <li>주제 축(취업 / 재테크 / 기타)별 게시물당 도달</li>
+          <li>한 줄 해석 — 숫자만 있는 리포트는 아무도 안 읽음</li>
+        </ul>
       </div>
-
       <div class="sub">
-        <h3>최근 8주 추이</h3>
-        <p class="cap">지표별 축 분리 · 하한선 표시</p>
-        <div class="charts2">
-          <div class="chart">
-            <div class="c-h">게시 건수</div>
-            <svg data-bars data-values="[4,3,2,4,3,2,2,3]" data-labels="[&quot;W29&quot;,&quot;W30&quot;,&quot;W31&quot;,&quot;W32&quot;,&quot;W33&quot;,&quot;W34&quot;,&quot;W35&quot;,&quot;W36&quot;]" data-ref="3" viewBox="0 0 320 118" aria-hidden="true"></svg>
-          </div>
-          <div class="chart">
-            <div class="c-h">팔로워 순증 (명)</div>
-            <svg data-bars data-values="[12,-8,5,18,-15,22,-45,38]" data-labels="[&quot;W29&quot;,&quot;W30&quot;,&quot;W31&quot;,&quot;W32&quot;,&quot;W33&quot;,&quot;W34&quot;,&quot;W35&quot;,&quot;W36&quot;]" data-zero="1" viewBox="0 0 320 118" aria-hidden="true"></svg>
-          </div>
-        </div>
-        <p class="take"><span class="fill">물량 2건이던 W34–35에 순증도 마이너스. W36 소폭 회복했지만 저장·공유 효율은 계속 하락.</span></p>
+        <h3>월 1회 롤업</h3>
+        <p class="cap" style="margin:0">신규 팔로워 인구통계 · 주제 축 이동 추이 · 게시물당 순증 · 릴스 비중 → 책임님 월간 대시보드 연동.</p>
       </div>
-
-      <div class="sub">
-        <h3>누적 효율 지표 <span class="src">IG</span><span class="src">SM</span></h3>
-        <p class="cap">30일 창 · 월 1회 갱신</p>
-        <div class="rows">
-          <div class="mrow"><span class="m-k">게시물당 팔로워 순증 — 최근 30일</span><span class="m-v tnum">5.6 <span class="u">명/건</span></span></div>
-          <div class="mrow"><span class="m-k">게시물당 팔로워 순증 — 직전 30일</span><span class="m-v tnum">8.9 <span class="u">명/건</span></span><span class="m-sub">효율 하락 확인</span></div>
-          <div class="mrow"><span class="m-k">릴스 비중 (90일)</span><span class="m-v tnum">62 <span class="u">%</span></span></div>
-          <div class="mrow gone"><span class="m-k">계정 점수 상위% · 반응 3점 비교 · EAR</span><span class="m-v" style="font-size:12px;font-weight:500;color:var(--ink-faint)">삭제</span><span class="m-sub">도구·정의 확정 시 재도입</span></div>
-        </div>
-      </div>
-
-      <div class="sub">
-        <h3>게시물별 성과 <span class="src">IG</span><span class="src">SB</span></h3>
-        <p class="cap">저장·공유를 앞에 · 좋아요는 내부 계정 13건 차감 · 가로 스크롤</p>
-        <div class="tscroll">
-          <table class="grid">
-            <thead><tr>
-              <th class="l">요일</th><th class="l">형식</th><th class="l">주제</th><th class="l">시리즈(회차)</th>
-              <th>도달</th><th>저장</th><th>공유</th><th>저장+공유율</th><th>댓글</th>
-              <th>키워드댓글</th><th>좋아요(−13)</th><th class="l">유입 경로</th><th class="l">부스팅</th><th>팔로우 순증</th>
-            </tr></thead>
-            <tbody>
-              <tr>
-                <td class="l">화</td><td class="l">릴스</td><td class="l">재테크</td><td class="l">ETF 인터뷰 기초편 (3)</td>
-                <td>1,947</td><td>34</td><td>12</td><td>2.4%</td><td>3</td>
-                <td>0</td><td>2</td><td class="l">탐색 61%</td><td class="l">X</td><td>+4 <span class="est">추정</span></td>
-              </tr>
-              <tr>
-                <td class="l">목</td><td class="l">카드뉴스</td><td class="l">재테크</td><td class="l">청년혜택 (2)</td>
-                <td>3,200</td><td>11</td><td>8</td><td>0.6%</td><td>0</td>
-                <td>0</td><td>1</td><td class="l">홈 72%</td><td class="l">X</td><td>+1 <span class="est">추정</span></td>
-              </tr>
-              <tr>
-                <td class="l">금</td><td class="l">릴스</td><td class="l">취업</td><td class="l">자소서 나눔 (4)</td>
-                <td class="hi">35,414</td><td class="hi">536</td><td class="hi">775</td><td class="hi">3.7%</td><td>1,145</td>
-                <td>1,481</td><td>24</td><td class="l">탐색 78%</td><td class="l">X</td><td>+33 <span class="est">추정</span></td>
-              </tr>
-              <tr class="total">
-                <td class="l" colspan="4">합계 · 3건</td>
-                <td>40,561</td><td>581</td><td>795</td><td>3.4%</td><td>1,148</td>
-                <td>1,481</td><td>27</td><td class="l">—</td><td class="l">—</td><td>+38</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="take">취업 콘텐츠 <b>1건이 도달의 87% · 저장·공유의 92%</b>. 형식이 아니라 주제 차이.</p>
-      </div>
-
     </div>
   </details>
 
   <!-- ===== FOLD 3 ===== -->
-  <details class="fold" id="f-why">
-    <summary><span class="tw">▸</span><h2>왜 이런 결과인가</h2><span class="teaser">주제축 · 매니챗 흐름 · 시리즈 · 실험 · 상하위</span></summary>
+  <details class="fold" id="f-cal">
+    <summary><span class="tw">▸</span><h2>이번 주 발행 계획 (9/7–11)</h2><span class="teaser">운영 캘린더 · 참고</span></summary>
     <div class="fold-body">
-
       <div class="sub">
-        <h3>주제별 성적 (누적) <span class="src">IG</span></h3>
-        <p class="cap">막대 = 게시물 1건당 평균 도달 · 캡션 키워드 자동 분류</p>
-        <div>
-          <div class="abar"><span>취업·자소서·서포터즈</span><div class="a-track"><div class="a-fill" style="width:100%"></div></div><span class="a-v"><b>36,143</b> · 47건 · 저장공유율 2.8%</span></div>
-          <div class="abar"><span>재테크 정보</span><div class="a-track"><div class="a-fill" style="width:6.7%"></div></div><span class="a-v"><b>2,422</b> · 31건 · 저장공유율 0.6%</span></div>
-          <div class="abar"><span>기타</span><div class="a-track"><div class="a-fill" style="width:22%"></div></div><span class="a-v"><b>7,960</b> · 12건 · 저장공유율 1.1%</span></div>
-        </div>
-        <p class="take">취업이 재테크보다 <b>도달 15배 · 저장공유율 4.7배</b>. 3주 연속 명확한 차이. → 회의 안건.</p>
-      </div>
-
-      <div class="sub">
-        <h3>이벤트 참여 흐름 (매니챗) <span class="src">SB</span><span class="src">마케팅팀</span></h3>
-        <p class="cap">SocialBiz 실제 지표명 · 폼 제출·계좌개설은 참고값</p>
-        <div class="funnel">
-          <div class="frow"><span class="f-lab">키워드 댓글</span><div class="f-track"><div class="f-bar" style="width:100%">1,481</div></div><span class="f-side"><b>1,481</b> 건</span></div>
-          <div class="frow"><span class="f-lab">컨택 (DM 발송)</span><div class="f-track"><div class="f-bar" style="width:82%">1,214</div></div><span class="f-side"><b>1,214</b> · <span class="cv">82%</span></span></div>
-          <div class="f-note">↳ 메시지 발송 1,237건 (컨택당 1.02건)</div>
-          <div class="frow"><span class="f-lab">링크 클릭</span><div class="f-track"><div class="f-bar" style="width:69%">1,027</div></div><span class="f-side"><b>1,027</b> · <span class="cv">85%</span></span></div>
-          <div class="frow drop"><span class="f-lab">폼 제출 <span class="ref">참고</span></span><div class="f-track"><div class="f-bar" style="width:22%">320</div></div><span class="f-side"><b>320</b> · <span class="cv">31%</span></span></div>
-          <div class="frow drop"><span class="f-lab">계좌개설 <span class="ref">참고</span></span><div class="f-track"><div class="f-bar" style="width:3%"></div></div><span class="f-side"><b>8</b> · <span class="cv">2.5%</span></span></div>
-        </div>
-        <p class="f-max">가장 많이 빠지는 구간 <b>[링크 클릭 → 폼 제출]</b> · 지난주 26% → 이번주 31% (개선).</p>
-      </div>
-
-      <div class="sub">
-        <h3>시리즈별 회차 추이 <span class="src">IG</span></h3>
-        <p class="cap">선 = 회차별 저장+공유율(%) · 3회 이상만 판단</p>
-        <div class="series">
-          <div class="srow"><span>자소서 나눔</span><svg data-line data-values="[3.1,3.8,3.5,4.0]" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true"></svg><span class="s-v">4회 · 상승 (3.1→4.0)</span></div>
-          <div class="srow"><span>ETF 인터뷰 기초편</span><svg data-line data-values="[2.4,2.6,2.2,1.9]" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true"></svg><span class="s-v">4회 · 3회차부터 하락</span></div>
-          <div class="srow"><span>청년혜택 카드뉴스</span><svg data-line data-values="[0.8,0.6]" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true"></svg><span class="s-v na">2회 · 판단 불가</span></div>
+        <p class="cap" style="margin:0">9/7 회의 확정. 리포트 성과 지표와는 별개인 팀별 발행 일정입니다.</p>
+        <div class="cal">
+          <div class="crow"><span class="c-d">9/8 화</span><span>발대식 브이로그 발행 — 현증공감<span class="c-mc">매니챗: 합격 꿀팁 페이지</span></span></div>
+          <div class="crow"><span class="c-d">9/9 수</span><span>무물 릴스 발행 — 현증잡아 · 밤까지 인터뷰 질문 리스트 제출<span class="c-mc">매니챗: 잡아 무물 이벤트 페이지</span></span></div>
+          <div class="crow"><span class="c-d">9/10 목</span><span>무물 카드뉴스 발행 — 현증머니<span class="c-mc">매니챗: 머니 무물 이벤트 페이지</span></span></div>
+          <div class="crow"><span class="c-d">9/11 금</span><span>신입직원 인터뷰 촬영 4명 (8:30 집합) · 금요 콘텐츠 발행 — 현증잡아 / 현증공감</span></div>
         </div>
       </div>
-
       <div class="sub">
-        <h3>이번 주 실험 <span class="src">IG</span></h3>
-        <p class="cap">같은 조건 3번 반복 전에는 결론 없음</p>
-        <div class="exp">
-          <div class="e-body">
-            <div><span class="e-k">가설</span>오전 9시 게시 → 초반 3시간 도달이 높다</div>
-            <div><span class="e-k">확인 지표</span>게시 후 3시간 누적 도달</div>
-            <div><span class="e-k">이번 주 관찰</span><span class="fill">9시 게시 1건 → 3h 도달 8,900 (기존 19시 평균 4,200)</span></div>
-          </div>
-          <div class="e-status">누적<b>1 / 3</b>판단 불가</div>
-        </div>
+        <h3>오늘(9/7) 결론 낼 것</h3>
+        <ul class="plain">
+          <li>이벤트 페이지 2개 (잡아 무물 · 머니 무물) — 매니챗 세팅이 대기 중</li>
+          <li>무물 릴스 발행 <b>시각</b> + 본문·해시태그 (현증잡아 → 고예원)</li>
+          <li>금요 인터뷰 질문 초안 — <b>수요일(9/9) 밤 마감</b>, 목요일 오전 신입직원에게 전달</li>
+        </ul>
       </div>
-
       <div class="sub">
-        <h3>누적 상위 / 하위 <span class="src">IG</span></h3>
-        <p class="cap">도달 기준 · 상·하위 각 3건</p>
-        <div class="tscroll">
-          <table class="grid">
-            <thead><tr><th class="l">구분</th><th class="l">게시물</th><th class="l">주제</th><th>도달</th><th>저장</th><th>공유</th><th>댓글</th></tr></thead>
-            <tbody>
-              <tr><td class="l">상위 1</td><td class="l">빈칸 채우면 나오는 5글자 메시지</td><td class="l">취업</td><td>765,672</td><td>120</td><td>300</td><td>68</td></tr>
-              <tr><td class="l">상위 2</td><td class="l">[현증 JOB아] 증권사 신입 이야기 1편</td><td class="l">취업</td><td>312,030</td><td>1,998</td><td>1,877</td><td>30</td></tr>
-              <tr><td class="l">상위 3</td><td class="l">자소서 나눔 (금융권)</td><td class="l">취업</td><td>35,414</td><td>536</td><td>775</td><td>1,145</td></tr>
-              <tr><td class="l">하위 1</td><td class="l">[사회초년생 재테크] 월급 200 IRP</td><td class="l">재테크</td><td>823</td><td>4</td><td>1</td><td>0</td></tr>
-              <tr><td class="l">하위 2</td><td class="l">[주식 기초] 변동성이 무섭고</td><td class="l">재테크</td><td>801</td><td>1</td><td>0</td><td>0</td></tr>
-              <tr><td class="l">하위 3</td><td class="l">주식은 어렵고, 답은 ETF</td><td class="l">재테크</td><td>776</td><td>1</td><td>1</td><td>0</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <h3>리포트 담당(최지연) 이번 주 몫</h3>
+        <p class="cap" style="margin:0">리포트 「틀」 확정 (완성도보다 구조) · 해시태그 데이터 정리 → 고예원에게 전달 (본문 확정에 사용).</p>
       </div>
-
     </div>
   </details>
 
   <!-- ===== FOLD 4 ===== -->
-  <details class="fold" id="f-risk">
-    <summary><span class="tw">▸</span><h2>리스크 · 기여 기록</h2><span class="teaser">장애 · 심의 · 파생 수요 · 이번 주 작업</span></summary>
-    <div class="fold-body">
-      <div class="sub">
-        <h3>특이사항 · 리스크 <span class="src">SB</span></h3>
-        <div>
-          <div class="rc ok"><span class="dot"></span><span><b>폼·링크 장애</b> 0건</span></div>
-          <div class="rc ok"><span class="dot"></span><span><b>미당첨 DM 회신</b> 0 / 0</span></div>
-          <div class="rc watch"><span class="dot"></span><span><b>심의 확인</b> 1건 — 청년혜택 카드뉴스, 대상 아님 회신</span></div>
-        </div>
-        <p class="cap" style="margin-top:8px">파생 수요: <span class="fill">“자소서 첨삭도 해주냐” 문의 12건 — 기획팀 공유</span></p>
-      </div>
-      <div class="sub">
-        <h3>이번 주 기여 기록</h3>
-        <p class="fill" style="font-size:12.5px;margin:0">주간 리포트 틀 v3 확정 · 저장·공유 우선 지표로 재편 · 주제 축 추적 신설 · 매니챗 흐름을 SocialBiz 실제 지표명과 매핑 · 누적 지표 3종 정리.</p>
-      </div>
-    </div>
-  </details>
-
-  <!-- ===== FOLD 5 ===== -->
   <details class="fold" id="f-notes">
     <summary><span class="tw">▸</span><h2>용어 · 출처 · 판단 규칙</h2><span class="teaser">읽기 전 참고</span></summary>
     <div class="fold-body">
@@ -918,37 +639,37 @@
           <dt>저장 · 공유</dt><dd>나중에 보려 저장 / 남에게 보냄 — 좋아요보다 강한 신호</dd>
           <dt>저장+공유율</dt><dd>(저장 + 공유) ÷ 도달</dd>
           <dt>팔로워 순증</dt><dd>새 팔로우 − 언팔로우</dd>
+          <dt>팔로우 게이팅</dt><dd>팔로우·댓글을 조건으로 자료를 DM하는 방식</dd>
           <dt>키워드 댓글</dt><dd>이벤트 참여 지정 단어 댓글 (매니챗 자동 DM)</dd>
-          <dt>컨택</dt><dd>매니챗이 실제 DM 보낸 사람</dd>
           <dt>주제 축</dt><dd>취업 / 재테크 / 기타</dd>
         </dl>
       </div>
       <div class="sub">
         <h3>출처</h3>
         <div class="legend">
-          <span><span class="src">SB</span> <b>SocialBiz</b> (NHN Data) — 댓글→DM · 발송 · 링크 클릭</span>
+          <span><span class="src">진단</span> <b>「현증선배 인스타그램 콘텐츠 진단」</b> — 책임님(정오근) 작성 · Supermetrics Studio · 2026.01~ · IG Insights 실시간 + 주간 추적 시트</span>
           <span><span class="src">IG</span> <b>인스타그램 인사이트</b> — 마케팅팀 제공</span>
+          <span><span class="src">SB</span> <b>SocialBiz</b> (NHN Data) — 댓글→DM · 발송 · 링크 클릭</span>
           <span><span class="src">SM</span> <b>Supermetrics</b> — 30 / 90일 누적</span>
-          <span><span class="src">마케팅팀</span> 랜딩페이지 / CRM</span>
         </div>
       </div>
       <div class="sub">
         <h3>데이터 주석</h3>
-        <ol class="plist">
-          <li>게시물별 <b>팔로우 순증</b>은 주간 순증을 게시 시점에 배분한 <b>추정치</b> — 인스타 API가 게시물 단위 팔로우/언팔을 주지 않음.</li>
-          <li>영상 <b>시청 유지율</b>(자막·질문별 이탈)은 인스타 앱 화면으로만 확인 — 마케팅팀 스크린샷 제공 시 게시물별 성과 표에 기재.</li>
-          <li><b>부스팅 게시물</b>은 유료 도달을 분리하고 자연 도달만 주간 반응률에 반영.</li>
-          <li><b>주제 축</b>은 캡션 키워드 자동 분류 — 일부 게시물은 양쪽에 걸침.</li>
-        </ol>
+        <ul class="plain">
+          <li>게시물 단위 <b>팔로우 전환</b>은 IG API가 null 반환 → 주간 순증과 게시 시점 대조로 <b>추정</b>. 정확한 측정에는 instagram_manage_insights 권한 재확인 필요.</li>
+          <li>5/30 게시물 도달 76.5만은 좋아요율 0.08%로 <b>광고 집행분 추정</b> (Meta Ads 캠페인 매칭 미실시).</li>
+          <li>콘텐츠 축 분류는 캡션 키워드 자동 분류 — 일부 게시물은 양쪽에 걸침.</li>
+          <li>월별 팔로워 순증은 주간 추적 시트 고정. 게시 물량·게시물 지표는 조회 시점 갱신.</li>
+          <li>영상 <b>시청 유지율</b>(자막·질문별 이탈)은 IG 앱 화면으로만 확인 — 마케팅팀 스크린샷 제공 시 게시물별 표에 기재.</li>
+        </ul>
       </div>
       <div class="sub">
         <div class="rulebox">판단 규칙 — 3회차·30건에 못 미치면 「아직 판단 불가」. 2배 미만 격차·누적 5건 미만은 판단하지 않는다.</div>
-        <div class="rollup"><b>월 1회 롤업 → 책임님 월간 대시보드 연동:</b> 신규 팔로워 인구통계, 주제 축 이동 추이, 게시물당 순증, 릴스 비중 — 주간 4개를 월말 합산.</div>
       </div>
     </div>
   </details>
 
-  <footer class="foot">현증선배 주간 리포트 · v4 · 최지연(서포터즈 운영팀) 작성</footer>
+  <footer class="foot">현증선배 주간 리포트 · W1 기준선판 · 최지연(서포터즈 운영팀) 작성 · 데이터 출처 책임님 진단 대시보드</footer>
 
 </div>
 
@@ -956,21 +677,17 @@
   (function () {
     var root = document.documentElement;
 
-    /* ---- theme ---- */
     var TKEY = 'hjsb-theme';
     try { var s = localStorage.getItem(TKEY); if (s === 'dark' || s === 'light') root.setAttribute('data-theme', s); } catch (e) {}
-    var tb = document.getElementById('themeBtn');
-    tb.addEventListener('click', function () {
+    document.getElementById('themeBtn').addEventListener('click', function () {
       var cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       var next = cur === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       try { localStorage.setItem(TKEY, next); } catch (e) {}
-      redraw();
     });
 
-    /* ---- folds: restore per-section state, expand-all toggle ---- */
     var folds = Array.prototype.slice.call(document.querySelectorAll('details.fold'));
-    var FKEY = 'hjsb-folds';
+    var FKEY = 'hjsb-folds-w1';
     var state = {};
     try { state = JSON.parse(localStorage.getItem(FKEY) || '{}'); } catch (e) { state = {}; }
     folds.forEach(function (d) {
@@ -979,7 +696,6 @@
         state[d.id] = d.open;
         try { localStorage.setItem(FKEY, JSON.stringify(state)); } catch (e) {}
         syncBtn();
-        redraw();
       });
     });
     var fa = document.getElementById('foldAll');
@@ -989,100 +705,18 @@
       var open = !allOpen();
       folds.forEach(function (d) { d.open = open; });
       syncBtn();
-      redraw();
     });
     syncBtn();
 
-    /* ---- print: open everything, restore after ---- */
     var snap = null;
     window.addEventListener('beforeprint', function () {
       snap = folds.map(function (d) { return d.open; });
       folds.forEach(function (d) { d.open = true; });
-      redraw();
     });
     window.addEventListener('afterprint', function () {
       if (snap) folds.forEach(function (d, i) { d.open = snap[i]; });
       snap = null;
     });
-
-    /* ---- charts ---- */
-    var NS = 'http://www.w3.org/2000/svg';
-    function css(v) { return getComputedStyle(document.body).getPropertyValue(v).trim(); }
-    function el(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
-
-    function drawSpark(svg) {
-      var vals = JSON.parse(svg.getAttribute('data-values'));
-      var vb = svg.getAttribute('viewBox').split(' ').map(Number);
-      var W = vb[2], H = vb[3], pad = 3;
-      var mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals), sp = (mx - mn) || 1;
-      var sx = (W - pad * 2) / (vals.length - 1);
-      var pts = vals.map(function (v, i) { return [pad + i * sx, H - pad - ((v - mn) / sp) * (H - pad * 2)]; });
-      var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
-      var acc = css('--accent');
-      var area = d + ' L ' + pts[pts.length - 1][0].toFixed(1) + ' ' + (H - pad) + ' L ' + pad + ' ' + (H - pad) + ' Z';
-      svg.appendChild(el('path', { d: area, fill: acc, opacity: '0.10' }));
-      svg.appendChild(el('path', { d: d, fill: 'none', stroke: acc, 'stroke-width': '1.5', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
-      svg.appendChild(el('circle', { cx: pts[pts.length - 1][0], cy: pts[pts.length - 1][1], r: '2', fill: acc }));
-    }
-
-    function drawBars(svg) {
-      var vals = JSON.parse(svg.getAttribute('data-values'));
-      var labels = JSON.parse(svg.getAttribute('data-labels'));
-      var zero = svg.getAttribute('data-zero') === '1';
-      var ref = svg.getAttribute('data-ref');
-      var W = 320, H = 118, padL = 30, padR = 6, padT = 12, padB = 20;
-      var pw = W - padL - padR, ph = H - padT - padB;
-      var mx = Math.max.apply(null, vals), mn = Math.min.apply(null, vals);
-      if (!zero) mn = Math.min(0, mn);
-      if (zero) { var m = Math.max(Math.abs(mx), Math.abs(mn)); mx = m; mn = -m; }
-      var rng = (mx - mn) || 1;
-      var y0 = padT + (mx / rng) * ph;
-      var ink = css('--ink-faint'), grid = css('--line'), acc = css('--accent'), neg = css('--neg');
-      function line(a, b, c, d, col, dash) { var l = el('line', { x1: a, y1: b, x2: c, y2: d, stroke: col, 'stroke-width': 1 }); if (dash) l.setAttribute('stroke-dasharray', dash); svg.appendChild(l); }
-      function txt(x, y, t, col, an, sz) { var e = el('text', { x: x, y: y, fill: col, 'text-anchor': an || 'middle', 'font-size': sz || 9, 'font-family': 'IBM Plex Mono, monospace' }); e.textContent = t; svg.appendChild(e); }
-      line(padL, y0, W - padR, y0, grid);
-      txt(padL - 5, y0 + 3, '0', ink, 'end');
-      txt(padL - 5, padT + 3, String(mx), ink, 'end');
-      if (zero) txt(padL - 5, padT + ph + 3, String(mn), ink, 'end');
-      if (ref) { var yr = padT + ((mx - Number(ref)) / rng) * ph; line(padL, yr, W - padR, yr, neg, '3 3'); txt(W - padR, yr - 3, '하한 ' + ref, neg, 'end', 8); }
-      var bw = pw / vals.length * 0.58;
-      vals.forEach(function (v, i) {
-        var cx = padL + pw * (i + 0.5) / vals.length;
-        var vy = padT + ((mx - v) / rng) * ph;
-        svg.appendChild(el('rect', { x: cx - bw / 2, y: Math.min(vy, y0), width: bw, height: Math.max(Math.abs(vy - y0), 1), rx: 2, fill: v < 0 ? neg : acc }));
-        txt(cx, H - padB + 12, labels[i], ink, 'middle', 8);
-      });
-    }
-
-    function drawLine(svg) {
-      var vals = JSON.parse(svg.getAttribute('data-values'));
-      var W = 240, H = 40, pad = 7;
-      var mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals), sp = (mx - mn) || 1;
-      var sx = (W - pad * 2) / (vals.length - 1);
-      var pts = vals.map(function (v, i) { return [pad + i * sx, H - pad - ((v - mn) / sp) * (H - pad * 2)]; });
-      var d = pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
-      var c = vals[vals.length - 1] < vals[0] ? css('--neg') : css('--pos');
-      svg.appendChild(el('path', { d: d, fill: 'none', stroke: c, 'stroke-width': '2', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
-      pts.forEach(function (p, i) {
-        svg.appendChild(el('circle', { cx: p[0], cy: p[1], r: i === pts.length - 1 ? 3 : 2, fill: c }));
-        var t = el('text', { x: p[0], y: p[1] - 6, fill: css('--ink-muted'), 'text-anchor': 'middle', 'font-size': '8', 'font-family': 'IBM Plex Mono, monospace' });
-        t.textContent = vals[i].toFixed(1); svg.appendChild(t);
-      });
-    }
-
-    function redraw() {
-      document.querySelectorAll('svg[data-spark],svg[data-bars],svg[data-line]').forEach(function (s) {
-        if (!s.getClientRects().length) return;
-        while (s.firstChild) s.removeChild(s.firstChild);
-        if (s.hasAttribute('data-spark')) drawSpark(s);
-        else if (s.hasAttribute('data-bars')) drawBars(s);
-        else drawLine(s);
-      });
-    }
-
-    redraw();
-    var rt;
-    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(redraw, 180); });
   })();
 </script>
 
