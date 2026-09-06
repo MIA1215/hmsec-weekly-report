@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   :root {
+    color-scheme: light;
     --ground: #f4f6f9;
     --surface: #ffffff;
     --sink: #eceff4;
@@ -30,48 +31,7 @@
     --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
     --mono: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ground: #0d1117;
-      --surface: #161c24;
-      --sink: #1d232d;
-      --ink: #e9ecf2;
-      --ink-muted: #a0a9b8;
-      --ink-faint: #6a7380;
-      --line: #262d38;
-      --line-strong: #38414e;
-      --accent: #6f9bff;
-      --accent-weak: #182740;
-      --gold: #e2a53f;
-      --pos: #49c184;
-      --pos-weak: #14271f;
-      --warn: #e0a23f;
-      --warn-weak: #2a2313;
-      --neg: #e8695a;
-      --neg-weak: #2f1a17;
-      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 22px rgba(0, 0, 0, .3);
-    }
-  }
-  :root[data-theme="dark"] {
-    --ground: #0d1117;
-    --surface: #161c24;
-    --sink: #1d232d;
-    --ink: #e9ecf2;
-    --ink-muted: #a0a9b8;
-    --ink-faint: #6a7380;
-    --line: #262d38;
-    --line-strong: #38414e;
-    --accent: #6f9bff;
-    --accent-weak: #182740;
-    --gold: #e2a53f;
-    --pos: #49c184;
-    --pos-weak: #14271f;
-    --warn: #e0a23f;
-    --warn-weak: #2a2313;
-    --neg: #e8695a;
-    --neg-weak: #2f1a17;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 22px rgba(0, 0, 0, .3);
-  }
+  /* 라이트 테마 고정 (다크 미지원) */
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -90,54 +50,25 @@
   .tnum { font-variant-numeric: tabular-nums; }
   .fill { color: var(--ink-faint); font-style: italic; }
 
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: color-mix(in srgb, var(--ground) 88%, transparent);
-    backdrop-filter: saturate(180%) blur(8px);
-    border-bottom: 1px solid var(--line);
-  }
-  .topbar-in {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 9px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .topbar .mark {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .04em;
-    color: var(--ink-faint);
-    text-transform: uppercase;
-    margin-right: auto;
-  }
-  .btn {
-    border: 1px solid var(--line-strong);
-    background: var(--surface);
-    color: var(--ink-muted);
-    font: inherit;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px 11px;
-    border-radius: 7px;
-    cursor: pointer;
-  }
-  .btn:hover { color: var(--ink); border-color: var(--ink-faint); }
-  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
   .wrap {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 26px 24px 64px;
+    padding: 30px 24px 60px;
     display: flex;
     flex-direction: column;
     gap: 18px;
   }
 
   /* masthead */
+  .mast .eyebrow {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
   .mast h1 {
     margin: 0 0 5px;
     font-size: 23px;
@@ -320,15 +251,28 @@
     .kpis { grid-template-columns: repeat(3, 1fr); }
     .dirs { grid-template-columns: repeat(3, 1fr); }
   }
-  @media (max-width: 720px) {
-    .grid2 { grid-template-columns: 1fr; }
-    .kpis { grid-template-columns: 1fr 1fr; }
-    .dirs { grid-template-columns: 1fr; }
+  @media (max-width: 640px) {
+    body { font-size: 12.5px; }
+    .wrap { padding: 22px 16px 48px; gap: 12px; }
+    .mast h1 { font-size: 20px; }
+    .grid2 { grid-template-columns: 1fr; gap: 12px; }
+    .grid2 > div[style*="flex"] { gap: 12px !important; }
+    .kpis { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .kpi { padding: 10px 11px 9px; }
+    .kpi .k-val { font-size: 20px; }
+    .dirs { grid-template-columns: 1fr; gap: 8px; }
+    .dcard { padding: 10px 12px; }
+    .dcard .d-d { font-size: 11px; }
+    .panel { padding: 13px 13px; }
+    .panel > .p-cap { margin-bottom: 9px; }
     .twocol { columns: 1; }
-    .abar { grid-template-columns: 100px 1fr; }
+    .abar { grid-template-columns: 92px 1fr; font-size: 11.5px; }
+    .sh { margin-top: 2px; }
+    .chart svg { height: 180px; }
+    footer.foot .twocol { font-size: 10px; }
   }
+
   @media print {
-    .topbar { display: none; }
     .kpi, .panel, .dcard { box-shadow: none; }
     body { background: #fff; }
     .grid2 { grid-template-columns: 1fr 1fr; }
@@ -337,16 +281,10 @@
 </head>
 <body>
 
-<div class="topbar">
-  <div class="topbar-in">
-    <span class="mark">현대차증권 마케팅팀 · 서포터즈 운영팀</span>
-    <button class="btn" id="themeBtn" type="button">◐ 테마</button>
-  </div>
-</div>
-
 <div class="wrap">
 
   <div class="mast">
+    <span class="eyebrow">현대차증권 마케팅팀 · 서포터즈 운영팀</span>
     <h1>현증선배 인스타그램 주간 리포트</h1>
     <div class="dateline"><b>W1</b> · 2026.09.07 (월) 작성 &nbsp;·&nbsp; 3기 활동 시작주 (첫 발행 9/8) &nbsp;·&nbsp; 최지연</div>
     <div class="banner">
@@ -547,17 +485,6 @@
 
 <script>
   (function () {
-    var root = document.documentElement;
-    var TKEY = 'hjsb-theme';
-    try { var s = localStorage.getItem(TKEY); if (s === 'dark' || s === 'light') root.setAttribute('data-theme', s); } catch (e) {}
-    document.getElementById('themeBtn').addEventListener('click', function () {
-      var cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      var next = cur === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem(TKEY, next); } catch (e) {}
-      redraw();
-    });
-
     var NS = 'http://www.w3.org/2000/svg';
     function css(v) { return getComputedStyle(document.body).getPropertyValue(v).trim(); }
     function el(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
@@ -584,12 +511,12 @@
       for (var g = bmin; g <= bmax + 0.001; g += bstep) {
         var gy = padT + ((bmax - g) / brange) * ph;
         svg.appendChild(el('line', { x1: padL, y1: gy, x2: W - padR, y2: gy, stroke: grid, 'stroke-width': g === 0 ? 1.2 : 0.6 }));
-        txt(svg, padL - 6, gy + 3, fmt(g), ink, 'end', 8.5);
+        txt(svg, padL - 6, gy + 3.5, fmt(g), ink, 'end', 10);
       }
       // right axis (line)
       for (var r = 0; r <= lmax + 0.001; r += lstep) {
         var ry = padT + (1 - r / lmax) * ph;
-        txt(svg, W - padR + 6, ry + 3, String(r), gold, 'start', 8.5);
+        txt(svg, W - padR + 6, ry + 3.5, String(r), gold, 'start', 10);
       }
 
       var slot = pw / bars.length, bw = slot * 0.5;
@@ -597,7 +524,7 @@
         var cx = padL + slot * (i + 0.5);
         var vy = padT + ((bmax - v) / brange) * ph;
         svg.appendChild(el('rect', { x: cx - bw / 2, y: Math.min(vy, zeroY), width: bw, height: Math.max(Math.abs(vy - zeroY), 1), rx: 2, fill: v < 0 ? neg : accent }));
-        txt(svg, cx, H - padB + 12, labels[i], ink, 'middle', 8.5);
+        txt(svg, cx, H - padB + 13, labels[i], ink, 'middle', 10);
       });
 
       var pts = line.map(function (v, i) { return [padL + slot * (i + 0.5), padT + (1 - v / lmax) * ph]; });
