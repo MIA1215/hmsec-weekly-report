@@ -440,6 +440,14 @@
   .hl-d { display: block; font-size: 11.5px; line-height: 1.5; margin-top: 8px; }
   .panel.tcard { background: color-mix(in srgb, var(--tc, var(--accent)) 7%, var(--surface)); border-color: color-mix(in srgb, var(--tc, var(--accent)) 18%, var(--line)); }
   .hl-c { background: color-mix(in srgb, var(--hc, var(--accent)) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--hc, var(--accent)) 16%, var(--line)); }
+  .obs-more { margin-top: 8px; }
+  .obs-more > summary { cursor: pointer; list-style: none; font-size: 10.5px; font-weight: 500; color: var(--ink-faint); font-family: var(--mono); padding: 2px 0; }
+  .obs-more > summary::-webkit-details-marker { display: none; }
+  .obs-more > summary::before { content: '▸'; display: inline-block; margin-right: 5px; transition: transform .15s; }
+  .obs-more[open] > summary::before { transform: rotate(90deg); }
+  .obs-more > summary:hover { color: var(--ink-muted); }
+  .obs-more > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .obs-more .obs-d { margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -524,22 +532,22 @@
     <div class="obs">
         <div class="obs-h"><span class="pcard-tg" style="color:var(--pink);background:var(--pink-weak)">①</span><b class="obs-t">얼굴을 크게 쓴 영상이 알고리즘을 탔습니다</b></div>
         <div class="chips"><span class="chip good">건너뛰기 38.7%</span><span class="chip">알고리즘 유입 86%</span><span class="chip">도달 12.8만</span></div>
-        <p class="obs-d">서포터즈 15명이 자막 한 줄 없이 얼굴로 시작했고, 건너뛰기가 나머지 세 편(72~75%)의 절반이었습니다. 첫 2초에 읽어야 할 게 없어서 멈추기 쉬웠던 것 같습니다. 다른 세 편은 첫 화면부터 자막이나 제목이 떠 있었습니다.<br><b>→ 9/15 화요일 본편도 첫 2초는 얼굴 전체화면으로, 제목은 3초 뒤에 얹기.</b></p>
+        <details class="obs-more"><summary>왜 그런지 보기</summary><p class="obs-d">서포터즈 15명이 자막 한 줄 없이 얼굴로 시작했고, 건너뛰기가 나머지 세 편(72~75%)의 절반이었습니다. 첫 2초에 읽어야 할 게 없어서 멈추기 쉬웠던 것 같습니다. 다른 세 편은 첫 화면부터 자막이나 제목이 떠 있었습니다.<br><b>→ 9/15 화요일 본편도 첫 2초는 얼굴 전체화면으로, 제목은 3초 뒤에 얹기.</b></p></details>
       </div>
     <div class="obs">
         <div class="obs-h"><span class="pcard-tg" style="color:var(--pink);background:var(--pink-weak)">②</span><b class="obs-t">10만 명이 봤는데 정작 취준생은 별로 없었습니다</b></div>
         <div class="chips"><span class="chip">프로필 6,226 → 팔로우 48</span><span class="chip warn">0.75%</span><span class="chip">무물 2.7%</span></div>
-        <p class="obs-d">트랜지션을 본 사람은 남성이 82%, 25~34세가 63%였습니다. 무물·발대식은 18~24세가 절반이었고요. 얼굴 보고 멈추기는 했는데, 여기가 무슨 채널인지 알려주는 게 없어서 그냥 지나간 것 같습니다.<br><b>→ 다음 감상형은 같은 얼굴로 2~3편 이어서. 한 번 보고 마는 것보다 얼굴이 반복돼야 기억에 남습니다.</b></p>
+        <details class="obs-more"><summary>왜 그런지 보기</summary><p class="obs-d">트랜지션을 본 사람은 남성이 82%, 25~34세가 63%였습니다. 무물·발대식은 18~24세가 절반이었고요. 얼굴 보고 멈추기는 했는데, 여기가 무슨 채널인지 알려주는 게 없어서 그냥 지나간 것 같습니다.<br><b>→ 다음 감상형은 같은 얼굴로 2~3편 이어서. 한 번 보고 마는 것보다 얼굴이 반복돼야 기억에 남습니다.</b></p></details>
       </div>
     <div class="obs">
         <div class="obs-h"><span class="pcard-tg" style="color:var(--accent);background:var(--accent-weak)">③</span><b class="obs-t">이벤트를 굴린 건 알고리즘이 아니라 서포터즈 스토리였습니다</b></div>
         <div class="chips"><span class="chip">스토리 유입 53%</span><span class="chip">계정 스토리 도달 1,758</span><span class="chip neg">9/12 새 DM 3명</span></div>
-        <p class="obs-d">발행 당일 각자 스토리로 리포스트했습니다(트랜지션 12 · 무물 11 · 발대식 7). 무물·발대식은 조회의 절반이 스토리에서 왔는데 계정 스토리를 본 사람은 1,758명뿐이라, 나머지는 개인 계정 몫으로 보입니다. 알고리즘이 12.8배 퍼뜨린 9/12에 새로 들어온 이벤트 DM은 무물 1명·발대식 2명이었습니다.<br><b>→ 9/17 카드뉴스는 발행 2시간 안에 13명 리포스트를 기본 절차로.</b></p>
+        <details class="obs-more"><summary>왜 그런지 보기</summary><p class="obs-d">발행 당일 각자 스토리로 리포스트했습니다(트랜지션 12 · 무물 11 · 발대식 7). 무물·발대식은 조회의 절반이 스토리에서 왔는데 계정 스토리를 본 사람은 1,758명뿐이라, 나머지는 개인 계정 몫으로 보입니다. 알고리즘이 12.8배 퍼뜨린 9/12에 새로 들어온 이벤트 DM은 무물 1명·발대식 2명이었습니다.<br><b>→ 9/17 카드뉴스는 발행 2시간 안에 13명 리포스트를 기본 절차로.</b></p></details>
       </div>
     <div class="obs">
         <div class="obs-h"><span class="pcard-tg" style="color:var(--mint);background:color-mix(in srgb,var(--mint) 14%,var(--surface))">④</span><b class="obs-t">긴 영상은 앞부분만 소비됩니다</b></div>
         <div class="chips"><span class="chip good">13초 62%</span><span class="chip warn">58초 16%</span><span class="chip neg">66초 9%</span></div>
-        <p class="obs-d">현터뷰는 66초 중 평균 6초를 봤습니다. 첫 대사가 "안녕하십니까"라, 3초 안에 무슨 영상인지 알기 어려웠습니다.<br><b>→ 길이를 줄이기보다 앞 10초에 핵심 장면을 배치하기.</b></p>
+        <details class="obs-more"><summary>왜 그런지 보기</summary><p class="obs-d">현터뷰는 66초 중 평균 6초를 봤습니다. 첫 대사가 "안녕하십니까"라, 3초 안에 무슨 영상인지 알기 어려웠습니다.<br><b>→ 길이를 줄이기보다 앞 10초에 핵심 장면을 배치하기.</b></p></details>
       </div>
   </div>
 
@@ -562,22 +570,22 @@
       <div class="obs">
         <div class="obs-h"><span class="pcard-tg" style="color:var(--pink);background:var(--pink-weak)">현증공감 · 트랜지션</span><b class="obs-t">자막 한 줄 없이 얼굴만으로 끝까지 봤습니다</b></div>
         <div class="chips"><span class="chip good">건너뛰기 38.7%</span><span class="chip">5초에 55% 남음</span><span class="chip">팔로우 39</span></div>
-        <p class="obs-d">혼자 서 있는 정면 컷으로 시작해 손으로 렌즈를 가리며 전환하고, 마지막에 다 같이 손 흔드는 단체샷으로 끝납니다. 좋아요는 시작 1초와 마지막 단체샷에 몰렸습니다. 이 영상을 보고 프로필까지 들어온 사람이 6,226명인데 팔로우한 사람은 39명이었습니다(9/12 저녁 기준, 지금은 44명).</p>
+        <details class="obs-more"><summary>왜 그런지 보기</summary><p class="obs-d">혼자 서 있는 정면 컷으로 시작해 손으로 렌즈를 가리며 전환하고, 마지막에 다 같이 손 흔드는 단체샷으로 끝납니다. 좋아요는 시작 1초와 마지막 단체샷에 몰렸습니다. 이 영상을 보고 프로필까지 들어온 사람이 6,226명인데 팔로우한 사람은 39명이었습니다(9/12 저녁 기준, 지금은 44명).</p></details>
       </div>
       <div class="obs">
         <div class="obs-h"><span class="pcard-tg" style="color:var(--accent);background:var(--accent-weak)">현증잡아 · 무물</span><b class="obs-t">첫 화면에 "치킨 준다"가 있어서 사람들이 움직였습니다</b></div>
         <div class="chips"><span class="chip">평균 5초 / 19초</span><span class="chip warn">건너뛰기 75.3%</span><span class="chip">DM 37명</span></div>
-        <p class="obs-d">첫 화면에 "질문하고 치킨 받아가세요"가 크게 뜨고, 5~9초에는 어떤 질문을 하면 되는지 예시 세 개를 말풍선으로 보여줍니다. 무엇을 주는지와 무엇을 하면 되는지가 첫 장면에 같이 있었습니다.</p>
+        <details class="obs-more"><summary>왜 그런지 보기</summary><p class="obs-d">첫 화면에 "질문하고 치킨 받아가세요"가 크게 뜨고, 5~9초에는 어떤 질문을 하면 되는지 예시 세 개를 말풍선으로 보여줍니다. 무엇을 주는지와 무엇을 하면 되는지가 첫 장면에 같이 있었습니다.</p></details>
       </div>
       <div class="obs">
         <div class="obs-h"><span class="pcard-tg" style="color:var(--pink);background:var(--pink-weak)">현증공감 · 발대식</span><b class="obs-t">댓글 달아달라는 말이 맨 끝에만 나와서 거의 못 봤습니다</b></div>
         <div class="chips"><span class="chip">평균 9초 / 58초</span><span class="chip warn">건너뛰기 72.0%</span><span class="chip">DM 40명</span></div>
-        <p class="obs-d">58초 동안 시간 순서대로 19개 장면이 이어집니다. 자료를 받으려면 댓글에 '꿀팁'이라고 써야 하는데, <b>그 단어가 영상 안에는 한 번도 나오지 않고 캡션에만 적혀 있습니다.</b> 사람들이 평균 9초 보고 나가는데 안내는 55초에 한 번뿐이었습니다.</p>
+        <details class="obs-more"><summary>왜 그런지 보기</summary><p class="obs-d">58초 동안 시간 순서대로 19개 장면이 이어집니다. 자료를 받으려면 댓글에 '꿀팁'이라고 써야 하는데, <b>그 단어가 영상 안에는 한 번도 나오지 않고 캡션에만 적혀 있습니다.</b> 사람들이 평균 9초 보고 나가는데 안내는 55초에 한 번뿐이었습니다.</p></details>
       </div>
       <div class="obs">
         <div class="obs-h"><span class="pcard-tg" style="color:var(--pink);background:var(--pink-weak)">현증공감 · 현터뷰</span><b class="obs-t">66초인데 평균 6초 — 4편 중 가장 짧게 봤습니다</b></div>
         <div class="chips"><span class="chip">평균 6초 / 66초</span><span class="chip warn">건너뛰기 74.0%</span><span class="chip">프로필 방문 117 · 팔로우 0</span></div>
-        <p class="obs-d">발대식 현장을 다시 쓴 인터뷰 영상입니다. 첫 대사가 "안녕하십니까"로 시작해, 3초 안에는 무슨 내용인지 드러나지 않습니다. 발행 6시간 값이라 아직 초기 수치입니다.</p>
+        <details class="obs-more"><summary>왜 그런지 보기</summary><p class="obs-d">발대식 현장을 다시 쓴 인터뷰 영상입니다. 첫 대사가 "안녕하십니까"로 시작해, 3초 안에는 무슨 내용인지 드러나지 않습니다. 발행 6시간 값이라 아직 초기 수치입니다.</p></details>
       </div>
     </div>
     <div class="panel">
