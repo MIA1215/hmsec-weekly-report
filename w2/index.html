@@ -466,7 +466,13 @@
     .grid2 > *, .grid3 > *, .obs-row > *, .exp > * { flex: 0 0 86%; scroll-snap-align: start; min-width: 0; }
     .grid2.even > .panel { display: flex; flex-direction: column; }
     .obs-row { margin-top: 2px; }
-    .obs-row > .obs, .obs-row > .obs:first-of-type { border-top: 0; padding: 11px 12px; background: var(--sink); border-radius: 10px; }
+    .obs-row > .obs, .obs-row > .obs:first-of-type { border: 1px solid var(--line); padding: 11px 12px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); }
+    /* 흰 박스 안에 회색 카드가 겹쳐 보이던 묶음(이번 주 분석 · 팀별 관찰 · 주간 확정 지표): 바깥 박스를 없애고 흰 카드만 */
+    .panel:has(> .obs-row), .panel:has(> .stats) { background: transparent; border: 0; box-shadow: none; padding: 0; }
+    .panel > .obs-row { margin-inline: -16px; padding: 0 16px 6px; scroll-padding-inline: 16px; }
+    .grid2:has(> .panel > .obs-row) > .panel > h3 { margin-bottom: 8px; }
+    .stats > .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 11px; box-shadow: var(--shadow); }
+    .panel:has(> .stats) > .p-foot { margin-top: 8px; }
     .abar { grid-template-columns: 58px minmax(40px, 1fr) auto; gap: 3px 8px; padding: 4px 0; }
     .abar .a-track { height: 15px; }
     .abar .a-v { grid-column: 3; white-space: nowrap; font-size: 10px; }
