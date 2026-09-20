@@ -1312,9 +1312,9 @@
 <script>
 (function(){
   var tabs=[document.getElementById('t-note'),document.getElementById('t-report')];
-  function show(id){ tabs.forEach(function(t){ var on=t.getAttribute('aria-controls')===id; t.setAttribute('aria-selected',on?'true':'false'); document.getElementById(t.getAttribute('aria-controls')).hidden=!on; }); try{ history.replaceState(null,'','#'+id); }catch(e){} }
+  function show(id){ tabs.forEach(function(t){ var on=t.getAttribute('aria-controls')===id; t.setAttribute('aria-selected',on?'true':'false'); document.getElementById(t.getAttribute('aria-controls')).hidden=!on; }); }
   tabs.forEach(function(t){ t.addEventListener('click',function(){ show(t.getAttribute('aria-controls')); window.scrollTo({top:0}); }); });
-  if(location.hash==='#report') show('report');
+  if(location.hash==='#report'){ show('report'); try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} }
 })();
 </script>
 
