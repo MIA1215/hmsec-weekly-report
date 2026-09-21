@@ -452,16 +452,19 @@
 <style>
   /* 모바일: 세로로 쌓이던 묶음을 옆으로 넘기기 (데스크톱 영향 없음) */
   @media (max-width: 640px) {
-    .kpis, .hl, .grid2, .grid3, .obs-row, .week, .exp {
+    .kpis, .hl, .grid2, .grid3, .obs-row, .week, .exp, .ins, .teams, .covers, .qb {
       display: flex !important; flex-wrap: nowrap; gap: 10px;
       overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
       scrollbar-width: none; overscroll-behavior-x: contain;
     }
     .kpis::-webkit-scrollbar, .hl::-webkit-scrollbar, .grid2::-webkit-scrollbar, .grid3::-webkit-scrollbar,
-    .obs-row::-webkit-scrollbar, .week::-webkit-scrollbar, .exp::-webkit-scrollbar { display: none; }
-    .wrap > .kpis, .wrap > .grid2, .wrap > .grid3 { margin-inline: -16px; padding-inline: 16px; scroll-padding-inline: 16px; }
+    .obs-row::-webkit-scrollbar, .week::-webkit-scrollbar, .exp::-webkit-scrollbar,
+    .ins::-webkit-scrollbar, .teams::-webkit-scrollbar, .covers::-webkit-scrollbar, .qb::-webkit-scrollbar { display: none; }
+    .wrap > .kpis, .wrap > .grid2, .wrap > .grid3, .wrap > .ins, .wrap > .teams { margin-inline: -16px; padding-inline: 16px; scroll-padding-inline: 16px; }
+    .panel > .covers, .panel > .qb { margin-inline: -14px; padding-inline: 14px; scroll-padding-inline: 14px; }
     .kpis > *, .hl > *, .week > * { flex: 0 0 44%; scroll-snap-align: start; min-width: 0; }
-    .grid2 > *, .grid3 > *, .obs-row > *, .exp > * { flex: 0 0 86%; scroll-snap-align: start; min-width: 0; }
+    .grid2 > *, .grid3 > *, .obs-row > *, .exp > *, .ins > *, .teams > *, .qb > * { flex: 0 0 86%; scroll-snap-align: start; min-width: 0; }
+    .covers > * { flex: 0 0 46%; scroll-snap-align: start; min-width: 0; }
     .grid2.even > .panel { display: flex; flex-direction: column; }
     .obs-row { margin-top: 2px; }
     .obs-row > .obs, .obs-row > .obs:first-of-type { border: 1px solid var(--line); padding: 11px 12px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); }
@@ -478,7 +481,11 @@
     .sh { font-family: var(--sans); letter-spacing: 0; font-size: 12px; flex-wrap: wrap; gap: 1px 8px; }
     .sh .note { font-size: 10.5px; }
     /* 한 줄 안의 카드는 높이를 똑같이, 하단 문구는 바닥선에 맞춤 */
-    .kpis, .hl, .grid2, .grid2.even, .grid3, .obs-row, .week, .exp { align-items: stretch; }
+    .kpis, .hl, .grid2, .grid2.even, .grid3, .obs-row, .week, .exp, .ins, .teams, .covers, .qb { align-items: stretch; }
+    .ins { align-items: flex-start; }
+    .teams > .tm, .qb > div { display: flex; flex-direction: column; }
+    .cv img { aspect-ratio: 3 / 4; }
+    .qb .abar { grid-template-columns: 86px minmax(40px, 1fr) auto; }
     .grid3 > .panel.tcard, .obs-row > .obs, .exp > .slot { display: flex; flex-direction: column; }
     .grid3 > .panel.tcard > .p-foot { margin-top: auto; }
     /* 높이 차이가 큰 줄(팀별 관찰 | 영상 길이·제안)은 넘기지 않고 위아래로 */
@@ -637,6 +644,7 @@
   <div class="chips teamjump"><span class="chip">우리 팀 바로가기</span><a class="chip" href="#tm-gong">현증공감</a><a class="chip" href="#tm-jab">현증잡아</a><a class="chip" href="#tm-money">현증머니</a></div>
 
   <p class="sh">이번 주 인사이트 <span class="note">현증선배 데이터에서 나온 것 · 모두 가설</span></p>
+  <p class="swipe-hint">옆으로 넘겨 보기 →</p>
   <div class="ins">
     <div class="in"><span class="conf m">확신도 중간</span><h4>자소서 팔로워 20명은 첫 화면의 '자소서 준다' 문구에서 나왔습니다</h4>
       <div class="nums"><div><b>20명</b><span>팔로우 · 이번 주 광고 없는 게시물 1위</span></div><div><b>92%</b><span>DM 받고 팔로우까지</span></div><div><b>8초</b><span>110초 중 평균 시청</span></div></div>
@@ -674,6 +682,7 @@
   </div></div>
 
   <p class="sh">팀별 카드</p>
+  <p class="swipe-hint">옆으로 넘겨 보기 →</p>
   <div class="teams">
     <div class="tm" id="tm-gong" style="--tc:var(--pink)"><h4>현증공감 · 콘텐츠 찍는 법 · 여의도 맛집</h4>
       <p class="row good"><i>좋았던 장면</i>0초부터 화면 위 문구가 고정돼 무슨 영상인지 바로 보임 · 3.5~8초 서포터즈 4명 얼굴 셀카 → 공유 86(이번 주 최다)</p>
@@ -704,6 +713,7 @@
   </div>
 
   <p class="sh">시청자 질문 뱅크 <span class="note">우리 답글을 뺀 사용자 댓글 · 재테크 201개 · 무물 52개(9/20 12:40)</span></p>
+  <p class="swipe-hint">옆으로 넘겨 보기 →</p>
   <div class="panel"><div class="qb">
     <div>
       <p class="b-title" style="margin-top:0">재테크 고민 · 무엇을 가장 많이 물었나</p>
