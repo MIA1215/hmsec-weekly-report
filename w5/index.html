@@ -752,6 +752,24 @@
     color:var(--warn);background:var(--warn-weak);border-radius:999px;padding:3px 10px}
   .w5-mock .panel{opacity:.92}
   @media (max-width:600px){ .w5-goal{grid-template-columns:minmax(0,1fr) 92px} .w5-mock{padding:30px 8px 8px} }
+  .w5-heat-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:6px;min-width:0;max-width:100%}
+  .w5-heat{display:grid;grid-template-columns:28px repeat(8,minmax(52px,1fr));gap:5px;min-width:500px;font-family:var(--sans);font-variant-numeric:tabular-nums}
+  .w5-hx{font-size:11.5px;color:var(--ink-faint);text-align:center;padding-bottom:2px}
+  .w5-hy{font-size:14px;font-weight:600;color:var(--ink);display:flex;align-items:center;justify-content:center}
+  .w5-hc{border-radius:8px;padding:11px 2px;text-align:center;font-size:13.5px;color:#3a2530;border:2px solid transparent}
+  .w5-hc.dk{color:#fff}
+  .w5-hc.top{border-color:#5e3a4d;color:#ffe0a6;font-weight:700;box-shadow:0 0 0 1px #5e3a4d}
+  .w5-heat-note{margin:12px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink);line-height:1.7}
+  @media (max-width:640px){
+    .w5-heat-wrap{overflow:visible}
+    .w5-heat{grid-template-columns:16px repeat(8,minmax(0,1fr));gap:3px;min-width:0}
+    .w5-hx{font-size:9px;letter-spacing:-.3px;white-space:nowrap}
+    .w5-hsi{display:none}
+    .w5-hy{font-size:12px}
+    .w5-hc{font-size:10px;letter-spacing:-.4px;padding:9px 0;border-radius:5px;border-width:1.5px}
+    .w5-hc.top{box-shadow:none}
+    .w5-heat-note{font-size:12.5px;padding-left:16px}
+  }
 </style>
 </head>
 <body>
@@ -1107,17 +1125,78 @@
     </div>
 
     <section class="panel">
-      <h3>팔로워가 가장 활동적인 시간</h3>
-      <p class="p-cap">3시간 간격 · IG 웹 실측</p>
-      <div class="abar"><div class="a-lab">12AM</div><div class="a-track"><div class="a-fill" style="width:57.5%;background:var(--line-strong)"></div></div><div class="a-v"><b>756</b></div></div>
-      <div class="abar"><div class="a-lab">3AM</div><div class="a-track"><div class="a-fill" style="width:18.6%;background:var(--line-strong)"></div></div><div class="a-v"><b>245</b></div></div>
-      <div class="abar"><div class="a-lab">6AM</div><div class="a-track"><div class="a-fill" style="width:54.9%;background:var(--line-strong)"></div></div><div class="a-v"><b>722</b></div></div>
-      <div class="abar"><div class="a-lab">9AM</div><div class="a-track"><div class="a-fill" style="width:78.0%;background:var(--line-strong)"></div></div><div class="a-v"><b>1,026</b></div></div>
-      <div class="abar"><div class="a-lab">12PM</div><div class="a-track"><div class="a-fill" style="width:89.5%;background:var(--line-strong)"></div></div><div class="a-v"><b>1,177</b></div></div>
-      <div class="abar"><div class="a-lab">3PM</div><div class="a-track"><div class="a-fill" style="width:92.9%;background:var(--line-strong)"></div></div><div class="a-v"><b>1,222</b></div></div>
-      <div class="abar"><div class="a-lab">6PM</div><div class="a-track"><div class="a-fill" style="width:100.0%;background:var(--pink)"></div></div><div class="a-v"><b>1,315</b></div></div>
-      <div class="abar"><div class="a-lab">9PM</div><div class="a-track"><div class="a-fill" style="width:99.9%;background:var(--pink)"></div></div><div class="a-v"><b>1,314</b></div></div>
-      <p class="p-foot">저녁 6시 1,315 · 9시 1,314가 가장 높습니다. 지금 본편 발행 시각이 18~19시대라 이 구간과 맞습니다.</p>
+      <h3>요일별 팔로워 활동 시간</h3>
+      <div class="w5-heat-wrap"><div class="w5-heat">
+        <div></div>
+<div class="w5-hx">0–3<span class="w5-hsi">시</span></div><div class="w5-hx">3–6</div><div class="w5-hx">6–9</div><div class="w5-hx">9–12</div><div class="w5-hx">12–15</div><div class="w5-hx">15–18</div><div class="w5-hx">18–21</div><div class="w5-hx">21–24<span class="w5-hsi">시</span></div>
+        <div class="w5-hy">월</div>
+<div class="w5-hc" style="background:#d09cb1">810</div>
+<div class="w5-hc" style="background:#f9eef2">271</div>
+<div class="w5-hc" style="background:#e4bccc">664</div>
+<div class="w5-hc dk" style="background:#b2708a">1,060</div>
+<div class="w5-hc dk" style="background:#a0607e">1,240</div>
+<div class="w5-hc dk" style="background:#9c607e">1,280</div>
+<div class="w5-hc dk top" style="background:#925f7e">1,370</div>
+<div class="w5-hc dk" style="background:#935f7e">1,360</div>
+        <div class="w5-hy">화</div>
+<div class="w5-hc" style="background:#deb2c4">712</div>
+<div class="w5-hc" style="background:#faf0f3">241</div>
+<div class="w5-hc" style="background:#d6a5b9">771</div>
+<div class="w5-hc dk" style="background:#b06d88">1,080</div>
+<div class="w5-hc dk" style="background:#a1607e">1,230</div>
+<div class="w5-hc dk" style="background:#a0607e">1,240</div>
+<div class="w5-hc dk" style="background:#96607e">1,330</div>
+<div class="w5-hc dk top" style="background:#95607e">1,340</div>
+        <div class="w5-hy">수</div>
+<div class="w5-hc" style="background:#deb2c4">713</div>
+<div class="w5-hc" style="background:#faf0f4">236</div>
+<div class="w5-hc" style="background:#d9aabd">746</div>
+<div class="w5-hc dk" style="background:#b2708a">1,060</div>
+<div class="w5-hc dk" style="background:#a4617e">1,200</div>
+<div class="w5-hc dk" style="background:#9f607e">1,250</div>
+<div class="w5-hc dk" style="background:#9a607e">1,290</div>
+<div class="w5-hc dk top" style="background:#98607e">1,310</div>
+        <div class="w5-hy">목</div>
+<div class="w5-hc" style="background:#ddb0c2">723</div>
+<div class="w5-hc" style="background:#faf0f4">237</div>
+<div class="w5-hc" style="background:#e2b8c9">684</div>
+<div class="w5-hc dk" style="background:#b2708a">1,060</div>
+<div class="w5-hc dk" style="background:#a5617e">1,190</div>
+<div class="w5-hc dk" style="background:#a0607e">1,240</div>
+<div class="w5-hc dk" style="background:#9a607e">1,290</div>
+<div class="w5-hc dk top" style="background:#99607e">1,300</div>
+        <div class="w5-hy">금</div>
+<div class="w5-hc" style="background:#deb1c3">716</div>
+<div class="w5-hc" style="background:#faf0f4">239</div>
+<div class="w5-hc" style="background:#e1b5c7">696</div>
+<div class="w5-hc dk" style="background:#b3718c">1,050</div>
+<div class="w5-hc dk" style="background:#a4617e">1,200</div>
+<div class="w5-hc dk" style="background:#9d607e">1,270</div>
+<div class="w5-hc dk top" style="background:#9a607e">1,290</div>
+<div class="w5-hc dk" style="background:#9c607e">1,280</div>
+        <div class="w5-hy">토</div>
+<div class="w5-hc" style="background:#d29eb3">800</div>
+<div class="w5-hc" style="background:#f9eff3">266</div>
+<div class="w5-hc" style="background:#f0dce4">495</div>
+<div class="w5-hc dk" style="background:#b5748e">1,030</div>
+<div class="w5-hc dk" style="background:#a3617e">1,210</div>
+<div class="w5-hc dk" style="background:#a1607e">1,230</div>
+<div class="w5-hc dk" style="background:#9f607e">1,250</div>
+<div class="w5-hc dk top" style="background:#99607e">1,300</div>
+        <div class="w5-hy">일</div>
+<div class="w5-hc" style="background:#ca93a9">854</div>
+<div class="w5-hc" style="background:#f8eef2">286</div>
+<div class="w5-hc" style="background:#f3e4eb">448</div>
+<div class="w5-hc dk" style="background:#b77791">1,010</div>
+<div class="w5-hc dk" style="background:#a2607e">1,220</div>
+<div class="w5-hc dk" style="background:#9d607e">1,270</div>
+<div class="w5-hc dk" style="background:#96607e">1,330</div>
+<div class="w5-hc dk top" style="background:#935f7e">1,360</div>
+      </div></div>
+      <ul class="w5-heat-note">
+        <li>저녁 6시~자정이 피크 — 요일 간 차이는 7% 안팎</li>
+        <li>새벽 3~6시 최저 / 주말 아침(6~9시)은 평일보다 눈에 띄게 낮음</li>
+      </ul>
     </section>
     <div class="sh">3. 영상 지표 <span class="note">인스타 앱에서만 보이는 지표입니다</span></div>
     <div class="grid2">
